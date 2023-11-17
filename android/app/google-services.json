@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "926297276895",
+    "project_id": "astroappweb",
+    "storage_bucket": "astroappweb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926297276895:android:48f9278d948c86f47e446a",
+        "android_client_info": {
+          "package_name": "com.astro.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926297276895-8uvm4deo7h6tnfb69rvnc9sgutqallea.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.astro.app",
+            "certificate_hash": "d1f8f63f126c3863ccabc0a29bbe5883b3bde89c"
+          }
+        },
+        {
+          "client_id": "926297276895-jupcsjbk7a2k3iuet6ab8hljh6gfckjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAly5y6mHMLgQLdZFDDipq34csapjM2yhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926297276895-jupcsjbk7a2k3iuet6ab8hljh6gfckjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "926297276895-3qc04vnqa3r6b9dng9r0a7765dkvos67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.astro.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926297276895:android:59567b945a6f73f77e446a",
+        "android_client_info": {
+          "package_name": "com.astrologer.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926297276895-7ur21b6v4rgut2h6pnp8fgp7l9jca5ep.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.astrologer.app",
+            "certificate_hash": "d1f8f63f126c3863ccabc0a29bbe5883b3bde89c"
+          }
+        },
+        {
+          "client_id": "926297276895-jupcsjbk7a2k3iuet6ab8hljh6gfckjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAly5y6mHMLgQLdZFDDipq34csapjM2yhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926297276895-jupcsjbk7a2k3iuet6ab8hljh6gfckjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "926297276895-3qc04vnqa3r6b9dng9r0a7765dkvos67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.astro.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:926297276895:android:e5a73fb3f4cb43d87e446a",
+        "android_client_info": {
+          "package_name": "com.astrologically.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "926297276895-jupcsjbk7a2k3iuet6ab8hljh6gfckjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAly5y6mHMLgQLdZFDDipq34csapjM2yhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "926297276895-jupcsjbk7a2k3iuet6ab8hljh6gfckjm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "926297276895-3qc04vnqa3r6b9dng9r0a7765dkvos67.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.astro.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
