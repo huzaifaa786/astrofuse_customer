@@ -46,7 +46,21 @@ class LiveAstrologerScreen extends StatefulWidget {
   final double videoCallCharge;
   final bool isFollow;
 
-  LiveAstrologerScreen({super.key, required this.token, required this.isForLiveCallAcceptDecline, required this.charge, required this.channel, required this.astrologerName, this.requesType, this.chatToken, this.astrologerProfile, required this.astrologerId, required this.isFromHome, this.isFromNotJoined = false, required this.videoCallCharge, required this.isFollow});
+  LiveAstrologerScreen(
+      {super.key,
+      required this.token,
+      required this.isForLiveCallAcceptDecline,
+      required this.charge,
+      required this.channel,
+      required this.astrologerName,
+      this.requesType,
+      this.chatToken,
+      this.astrologerProfile,
+      required this.astrologerId,
+      required this.isFromHome,
+      this.isFromNotJoined = false,
+      required this.videoCallCharge,
+      required this.isFollow});
 
   @override
   State<LiveAstrologerScreen> createState() => _LiveAstrologerScreenState();
@@ -78,8 +92,10 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
   bool isHostJoin = false;
   bool isHostJoinAsAudio = false;
   bool isSetConn = false;
-  final BottomNavigationController bottomNavigationController = Get.find<BottomNavigationController>();
-  final FollowAstrologerController followAstrologerController = Get.find<FollowAstrologerController>();
+  final BottomNavigationController bottomNavigationController =
+      Get.find<BottomNavigationController>();
+  final FollowAstrologerController followAstrologerController =
+      Get.find<FollowAstrologerController>();
   final WalletController walletController = Get.find<WalletController>();
   final LiveController liveController = Get.find<LiveController>();
   final TextEditingController messageController = TextEditingController();
@@ -114,13 +130,15 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
       messageModel.orderId = null;
       messageController.text = '';
       print('live chat send message1');
-      await liveController.uploadMessage(liveController.chatId!, astrologerId, messageModel);
+      await liveController.uploadMessage(
+          liveController.chatId!, astrologerId, messageModel);
     } else {
       print('messagecontroller');
     }
   }
 
-  void openBottomSheetRechrage(BuildContext context, double totalCharge, bool isForGift) {
+  void openBottomSheetRechrage(
+      BuildContext context, double totalCharge, bool isForGift) {
     Get.bottomSheet(
       Container(
         height: MediaQuery.of(context).size.height * 0.35,
@@ -148,10 +166,13 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                         height: 50,
                                         width: Get.width - 70,
                                         child: Padding(
-                                          padding: const EdgeInsets.only(top: 8.0, bottom: 5),
+                                          padding: const EdgeInsets.only(
+                                              top: 8.0, bottom: 5),
                                           child: Text(
                                             'Minimum balance of 5 minutes (${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)} $totalCharge) is required to start call',
-                                            style: TextStyle(fontWeight: FontWeight.w400, color: Colors.red),
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.red),
                                             softWrap: true,
                                           ).translate(),
                                         ),
@@ -159,17 +180,24 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                     ],
                                   ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8.0, bottom: 5),
-                              child: Text('Recharge Now', style: TextStyle(fontWeight: FontWeight.w500)).translate(),
+                              padding:
+                                  const EdgeInsets.only(top: 8.0, bottom: 5),
+                              child: Text('Recharge Now',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500))
+                                  .translate(),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(right: 5),
-                                  child: Icon(Icons.lightbulb_rounded, color: Get.theme.primaryColor, size: 13),
+                                  child: Icon(Icons.lightbulb_rounded,
+                                      color: Get.theme.primaryColor, size: 13),
                                 ),
-                                Text('Tip:90% users recharge for 10 mins or more.', style: TextStyle(fontSize: 12)).translate()
+                                Text('Tip:90% users recharge for 10 mins or more.',
+                                        style: TextStyle(fontSize: 12))
+                                    .translate()
                               ],
                             ),
                           ],
@@ -182,7 +210,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
             ),
             Expanded(
                 child: GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       childAspectRatio: 3.8 / 2.3,
                       crossAxisSpacing: 1,
@@ -197,7 +226,10 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                         onTap: () async {
                           await leave();
                           Get.delete<RazorPayController>();
-                          Get.to(() => PaymentInformationScreen(flag: 0, amount: double.parse(walletController.payment[index])));
+                          Get.to(() => PaymentInformationScreen(
+                              flag: 0,
+                              amount: double.parse(
+                                  walletController.payment[index])));
                         },
                         child: Container(
                           margin: const EdgeInsets.all(8.0),
@@ -285,14 +317,18 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                 padding: EdgeInsets.all(10),
                                 width: Get.width,
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Row(
                                       children: [
-                                        liveController.waitList[index].userProfile != ""
+                                        liveController.waitList[index]
+                                                    .userProfile !=
+                                                ""
                                             ? CircleAvatar(
                                                 radius: 15,
-                                                backgroundColor: Get.theme.primaryColor,
+                                                backgroundColor:
+                                                    Get.theme.primaryColor,
                                                 child: Image.network(
                                                   "${global.imgBaseurl}${liveController.waitList[index].userProfile}",
                                                   height: 18,
@@ -300,7 +336,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                               )
                                             : CircleAvatar(
                                                 radius: 15,
-                                                backgroundColor: Get.theme.primaryColor,
+                                                backgroundColor:
+                                                    Get.theme.primaryColor,
                                                 child: Image.asset(
                                                   "assets/images/no_customer_image.png",
                                                   height: 18,
@@ -312,11 +349,18 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                             children: [
                                               Text(
                                                 "${liveController.waitList[index].userName}",
-                                                style: TextStyle(fontWeight: FontWeight.w500),
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ).translate(),
                                               Text(
-                                                liveController.waitList[index].isOnline ? "Online" : "Offine",
-                                                style: TextStyle(fontWeight: FontWeight.w500),
+                                                liveController.waitList[index]
+                                                        .isOnline
+                                                    ? "Online"
+                                                    : "Offine",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
                                               ).translate(),
                                             ],
                                           ),
@@ -327,38 +371,60 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                       children: [
                                         CircleAvatar(
                                           radius: 10,
-                                          backgroundColor: Get.theme.primaryColor,
+                                          backgroundColor:
+                                              Get.theme.primaryColor,
                                           child: Icon(
-                                            liveController.waitList[index].requestType == "Video"
+                                            liveController.waitList[index]
+                                                        .requestType ==
+                                                    "Video"
                                                 ? Icons.video_call
-                                                : liveController.waitList[index].requestType == "Audio"
+                                                : liveController.waitList[index]
+                                                            .requestType ==
+                                                        "Audio"
                                                     ? Icons.call
                                                     : Icons.chat,
                                             color: Colors.black,
                                             size: 13,
                                           ),
                                         ),
-                                        liveController.waitList[index].status == "Pending"
+                                        liveController.waitList[index].status ==
+                                                "Pending"
                                             ? Padding(
-                                                padding: const EdgeInsets.only(left: 10),
+                                                padding: const EdgeInsets.only(
+                                                    left: 10),
                                                 child: Text(
                                                   "${liveController.waitList[index].time} sec",
-                                                  style: TextStyle(fontWeight: FontWeight.w500),
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500),
                                                 ),
                                               )
                                             : CountdownTimer(
                                                 endTime: liveController.endTime,
-                                                widgetBuilder: (_, CurrentRemainingTime? time) {
+                                                widgetBuilder: (_,
+                                                    CurrentRemainingTime?
+                                                        time) {
                                                   if (time == null) {
-                                                    return Text('00 min 00 sec1');
+                                                    return Text(
+                                                        '00 min 00 sec1');
                                                   }
                                                   return Padding(
-                                                    padding: const EdgeInsets.only(left: 10),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 10),
                                                     child: time.min != null
-                                                        ? Text('${time.min} min ${time.sec} sec', style: TextStyle(fontWeight: FontWeight.w500))
+                                                        ? Text(
+                                                            '${time.min} min ${time.sec} sec',
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500))
                                                         : Text(
                                                             '${time.sec} sec',
-                                                            style: TextStyle(fontWeight: FontWeight.w500),
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
                                                           ),
                                                   );
                                                 },
@@ -387,7 +453,10 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                           padding: EdgeInsets.only(top: 0),
                           child: Center(
                             child: RichText(
-                              text: TextSpan(text: snapShot.data ?? "Wait Time - ", style: TextStyle(color: Colors.black), children: []),
+                              text: TextSpan(
+                                  text: snapShot.data ?? "Wait Time - ",
+                                  style: TextStyle(color: Colors.black),
+                                  children: []),
                             ),
                           ),
                         );
@@ -412,7 +481,9 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                         }
                       },
                       child: Text(
-                        liveController.isImInWaitList ? "Joined" : "Join Waitlist",
+                        liveController.isImInWaitList
+                            ? "Joined"
+                            : "Join Waitlist",
                         style: TextStyle(
                           color: Colors.black,
                         ),
@@ -430,14 +501,16 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10))),
             content: Container(
               height: 280,
               child: Column(
                 children: [
                   Padding(
                     padding: EdgeInsets.only(top: 20),
-                    child: Icon(MdiIcons.alarm, size: 75, color: Get.theme.primaryColor),
+                    child: Icon(MdiIcons.alarm,
+                        size: 75, color: Get.theme.primaryColor),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10),
@@ -451,7 +524,10 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                     padding: EdgeInsets.only(top: 10),
                     child: Text(
                       "Are you sure you want to exit?",
-                      style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold),
                       textAlign: TextAlign.center,
                     ).translate(),
                   ),
@@ -467,11 +543,14 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                           child: Container(
                             height: 40,
                             width: 100,
-                            decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(50)),
+                            decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(50)),
                             child: Center(
                               child: Text(
                                 "Cancel",
-                                style: TextStyle(color: Colors.white, fontSize: 13),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 13),
                               ).translate(),
                             ),
                           ),
@@ -479,9 +558,12 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                         GestureDetector(
                           onTap: () async {
                             Get.back();
-                            int index = liveController.waitList.indexWhere((element) => element.userId == global.currentUserId);
+                            int index = liveController.waitList.indexWhere(
+                                (element) =>
+                                    element.userId == global.currentUserId);
                             if (index != -1) {
-                              await liveController.deleteFromWaitList(liveController.waitList[index].id);
+                              await liveController.deleteFromWaitList(
+                                  liveController.waitList[index].id);
                               liveController.isImInWaitList = false;
                               liveController.update();
                             }
@@ -509,11 +591,14 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                           child: Container(
                             height: 40,
                             width: 100,
-                            decoration: BoxDecoration(color: Colors.red, borderRadius: BorderRadius.circular(50)),
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(50)),
                             child: Center(
                               child: Text(
                                 "Exit Call",
-                                style: TextStyle(color: Colors.white, fontSize: 13),
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 13),
                                 textAlign: TextAlign.center,
                               ).translate(),
                             ),
@@ -526,7 +611,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
               ),
             ),
             actionsAlignment: MainAxisAlignment.spaceBetween,
-            actionsPadding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
+            actionsPadding:
+                const EdgeInsets.only(bottom: 15, left: 15, right: 15),
           );
         });
   }
@@ -560,7 +646,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                             print('totalCharge:--> $totalCharge');
 
                             if (totalCharge <= global.user.walletAmount!) {
-                              await liveController.addToWaitList(channel2!, "Video", astrologerId2!);
+                              await liveController.addToWaitList(channel2!,
+                                  "Video", astrologerId2!, totalCharge);
 
                               global.showToast(
                                 message: 'you have joined in waitlist',
@@ -569,12 +656,12 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                               );
                               liveController.isImInWaitList = true;
                               liveController.update();
-                            }
-                            else {
+                            } else {
                               global.showOnlyLoaderDialog(context);
                               await walletController.getAmount();
                               global.hideLoader();
-                              openBottomSheetRechrage(context, totalCharge, false);
+                              openBottomSheetRechrage(
+                                  context, totalCharge, false);
                             }
                           },
                           child: Column(
@@ -595,7 +682,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                             Get.back();
                             double totalCharge = charge2! * 5;
                             if (totalCharge <= global.user.walletAmount!) {
-                              await liveController.addToWaitList(channel2!, "Audio", astrologerId2!);
+                              await liveController.addToWaitList(channel2!,
+                                  "Audio", astrologerId2!, totalCharge);
 
                               global.showToast(
                                 message: 'you have joined in waitlist',
@@ -608,7 +696,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                               global.showOnlyLoaderDialog(context);
                               await walletController.getAmount();
                               global.hideLoader();
-                              openBottomSheetRechrage(context, totalCharge, false);
+                              openBottomSheetRechrage(
+                                  context, totalCharge, false);
                             }
                           },
                           child: Column(
@@ -628,7 +717,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                             Get.back();
                             double totalCharge = charge2! * 5;
                             if (totalCharge <= global.user.walletAmount!) {
-                              await liveController.addToWaitList(channel2!, "Chat", astrologerId2!);
+                              await liveController.addToWaitList(channel2!,
+                                  "Chat", astrologerId2!, totalCharge);
 
                               global.showToast(
                                 message: 'you have joined in waitlist',
@@ -641,7 +731,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                               global.showOnlyLoaderDialog(context);
                               await walletController.getAmount();
                               global.hideLoader();
-                              openBottomSheetRechrage(context, totalCharge, false);
+                              openBottomSheetRechrage(
+                                  context, totalCharge, false);
                             }
                           },
                           child: Column(
@@ -686,7 +777,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                 ),
                               );
                             },
-                            placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
                             errorWidget: (context, url, error) {
                               return CircleAvatar(
                                   radius: 40,
@@ -779,11 +871,14 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
       liveController.joinUserName = global.user.name ?? "User";
       liveController.joinUserProfile = global.user.profile ?? "";
       print('live joined user name ${liveController.joinUserName}');
-      print("liveController.totalCompletedTime: " + liveController.totalCompletedTime.toString());
+      print("liveController.totalCompletedTime: " +
+          liveController.totalCompletedTime.toString());
       liveController.update();
       timer = Timer.periodic(Duration(seconds: 1), (timer) {
-        liveController.totalCompletedTime = liveController.totalCompletedTime + 1;
-        print("updated totalCompletedTime :  " + liveController.totalCompletedTime.toString());
+        liveController.totalCompletedTime =
+            liveController.totalCompletedTime + 1;
+        print("updated totalCompletedTime :  " +
+            liveController.totalCompletedTime.toString());
       });
 
       timer2 = Timer.periodic(Duration(seconds: 5), (timer) async {
@@ -796,8 +891,10 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
             isStartRecordingForAudio = true;
             print('isStartRecordingForAudio $isStartRecordingForAudio');
           });
-          await callController.getAgoraResourceId(widget.channel, global.localLiveUid!);
-          await callController.getAgoraResourceId2(widget.channel, global.localLiveUid2!);
+          await callController.getAgoraResourceId(
+              widget.channel, global.localLiveUid!);
+          await callController.getAgoraResourceId2(
+              widget.channel, global.localLiveUid2!);
           await startRecord();
           await startRecord2();
         }
@@ -813,7 +910,10 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
         global.showOnlyLoaderDialog(context);
         await bottomNavigationController.getLiveAstrologerList();
         global.hideLoader();
-        bottomNavigationController.anotherLiveAstrologers = bottomNavigationController.liveAstrologer.where((element) => element.astrologerId != astrologerId2).toList();
+        bottomNavigationController.anotherLiveAstrologers =
+            bottomNavigationController.liveAstrologer
+                .where((element) => element.astrologerId != astrologerId2)
+                .toList();
         showModalBottomSheet(
             context: context,
             shape: RoundedRectangleBorder(
@@ -840,7 +940,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                             flex: 3,
                             child: Container(
                               child: Center(
-                                child: Text("No Astrologer available").translate(),
+                                child:
+                                    Text("No Astrologer available").translate(),
                               ),
                             ),
                           )
@@ -850,23 +951,58 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                               Center(
                                 child: Wrap(
                                   children: [
-                                    for (int index = 0; index < bottomNavigationController.anotherLiveAstrologers.length; index++)
+                                    for (int index = 0;
+                                        index <
+                                            bottomNavigationController
+                                                .anotherLiveAstrologers.length;
+                                        index++)
                                       GestureDetector(
                                         onTap: () {
                                           Get.back();
                                           leave();
                                           Get.back();
-                                          Future.delayed(Duration(milliseconds: 50)).then((value) {
+                                          Future.delayed(
+                                                  Duration(milliseconds: 50))
+                                              .then((value) {
                                             Get.to(() => LiveAstrologerScreen(
-                                                  token: bottomNavigationController.anotherLiveAstrologers[index].token,
-                                                  channel: bottomNavigationController.anotherLiveAstrologers[index].channelName,
-                                                  astrologerName: bottomNavigationController.anotherLiveAstrologers[index].name,
-                                                  astrologerId: bottomNavigationController.anotherLiveAstrologers[index].astrologerId,
+                                                  token:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .token,
+                                                  channel:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .channelName,
+                                                  astrologerName:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .name,
+                                                  astrologerId:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .astrologerId,
                                                   isFromHome: true,
-                                                  charge: bottomNavigationController.anotherLiveAstrologers[index].charge,
-                                                  isForLiveCallAcceptDecline: false,
-                                                  isFollow: bottomNavigationController.anotherLiveAstrologers[index].isFollow!,
-                                                  videoCallCharge: bottomNavigationController.anotherLiveAstrologers[index].videoCallRate,
+                                                  charge:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .charge,
+                                                  isForLiveCallAcceptDecline:
+                                                      false,
+                                                  isFollow:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .isFollow!,
+                                                  videoCallCharge:
+                                                      bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .videoCallRate,
                                                 ));
                                           });
                                         },
@@ -876,39 +1012,59 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                           child: Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              bottomNavigationController.anotherLiveAstrologers[index].profileImage == ""
+                                              bottomNavigationController
+                                                          .anotherLiveAstrologers[
+                                                              index]
+                                                          .profileImage ==
+                                                      ""
                                                   ? CircleAvatar(
                                                       radius: 30,
-                                                      backgroundColor: Get.theme.primaryColor,
+                                                      backgroundColor: Get
+                                                          .theme.primaryColor,
                                                       child: Image.asset(
                                                         Images.deafultUser,
                                                         fit: BoxFit.fill,
                                                         height: 40,
                                                       ))
                                                   : CachedNetworkImage(
-                                                      imageUrl: "${global.imgBaseurl}${bottomNavigationController.anotherLiveAstrologers[index].profileImage}",
-                                                      imageBuilder: (context, imageProvider) {
+                                                      imageUrl:
+                                                          "${global.imgBaseurl}${bottomNavigationController.anotherLiveAstrologers[index].profileImage}",
+                                                      imageBuilder: (context,
+                                                          imageProvider) {
                                                         return CircleAvatar(
                                                           radius: 30,
-                                                          backgroundColor: Colors.white,
-                                                          backgroundImage: imageProvider,
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                          backgroundImage:
+                                                              imageProvider,
                                                         );
                                                       },
-                                                      placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                                      errorWidget: (context, url, error) {
+                                                      placeholder: (context,
+                                                              url) =>
+                                                          const Center(
+                                                              child:
+                                                                  CircularProgressIndicator()),
+                                                      errorWidget: (context,
+                                                          url, error) {
                                                         return CircleAvatar(
                                                             radius: 30,
-                                                            backgroundColor: Colors.white,
+                                                            backgroundColor:
+                                                                Colors.white,
                                                             child: Image.asset(
-                                                              Images.deafultUser,
+                                                              Images
+                                                                  .deafultUser,
                                                               fit: BoxFit.fill,
                                                               height: 40,
                                                             ));
                                                       },
                                                     ),
                                               Text(
-                                                bottomNavigationController.anotherLiveAstrologers[index].name,
-                                                style: Get.textTheme.bodyText2!.copyWith(fontSize: 10),
+                                                bottomNavigationController
+                                                    .anotherLiveAstrologers[
+                                                        index]
+                                                    .name,
+                                                style: Get.textTheme.bodyText2!
+                                                    .copyWith(fontSize: 10),
                                               ).translate(),
                                             ],
                                           ),
@@ -923,17 +1079,22 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                       flex: 1,
                       child: SizedBox(
                         child: Row(
-                          mainAxisAlignment: isFollowLocal ? MainAxisAlignment.center : MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: isFollowLocal
+                              ? MainAxisAlignment.center
+                              : MainAxisAlignment.spaceAround,
                           children: [
                             ElevatedButton(
                               onPressed: () async {
                                 leave();
                                 if (!widget.isFromHome) {
-                                  print('Leave proccess start after leave method from else part !widget.isFromHome');
-                                  bottomNavigationController.setBottomIndex(0, 0);
+                                  print(
+                                      'Leave proccess start after leave method from else part !widget.isFromHome');
+                                  bottomNavigationController.setBottomIndex(
+                                      0, 0);
                                   Get.back();
                                 } else {
-                                  print('Leave proccess start after leave method from else part');
+                                  print(
+                                      'Leave proccess start after leave method from else part');
                                   Get.back();
                                   Get.back();
                                 }
@@ -948,10 +1109,15 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                 ),
-                                fixedSize: MaterialStateProperty.all(Size.fromWidth(Get.width * 0.4)),
-                                padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 25, vertical: 15)),
-                                backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                textStyle: MaterialStateProperty.all(TextStyle(fontSize: 12, color: Colors.black)),
+                                fixedSize: MaterialStateProperty.all(
+                                    Size.fromWidth(Get.width * 0.4)),
+                                padding: MaterialStateProperty.all(
+                                    EdgeInsets.symmetric(
+                                        horizontal: 25, vertical: 15)),
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.grey),
+                                textStyle: MaterialStateProperty.all(TextStyle(
+                                    fontSize: 12, color: Colors.black)),
                               ),
                             ),
                             isFollowLocal
@@ -960,16 +1126,20 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                     onPressed: () async {
                                       leave();
                                       if (!widget.isFromHome) {
-                                        print('Leave proccess start from follow and live after leave method from else part !widget.isFromHome');
-                                        bottomNavigationController.setBottomIndex(0, 0);
+                                        print(
+                                            'Leave proccess start from follow and live after leave method from else part !widget.isFromHome');
+                                        bottomNavigationController
+                                            .setBottomIndex(0, 0);
                                         Get.back();
                                       } else {
-                                        print('Leave proccess start follow and live after after leave method from else part');
+                                        print(
+                                            'Leave proccess start follow and live after after leave method from else part');
                                         Get.back();
                                         Get.back();
                                       }
                                       global.showOnlyLoaderDialog(context);
-                                      await followAstrologerController.addFollowers(astrologerId2!);
+                                      await followAstrologerController
+                                          .addFollowers(astrologerId2!);
                                       global.hideLoader();
                                       //Get.back();
                                     },
@@ -980,13 +1150,22 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                     style: ButtonStyle(
                                       shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
                                       ),
-                                      fixedSize: MaterialStateProperty.all(Size.fromWidth(Get.width * 0.4)),
-                                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 25, vertical: 15)),
-                                      backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
-                                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 12, color: Colors.black)),
+                                      fixedSize: MaterialStateProperty.all(
+                                          Size.fromWidth(Get.width * 0.4)),
+                                      padding: MaterialStateProperty.all(
+                                          EdgeInsets.symmetric(
+                                              horizontal: 25, vertical: 15)),
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                              Get.theme.primaryColor),
+                                      textStyle: MaterialStateProperty.all(
+                                          TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black)),
                                     ),
                                   ),
                           ],
@@ -1022,9 +1201,13 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                               isImHost
                                   ? Container(
                                       margin: EdgeInsets.only(
-                                        top: widget.isFromHome ? Get.height * 0.46 : Get.height * 0.46,
+                                        top: widget.isFromHome
+                                            ? Get.height * 0.46
+                                            : Get.height * 0.46,
                                       ),
-                                      height: widget.isFromHome ? Get.height * 0.46 : Get.height * 0.46,
+                                      height: widget.isFromHome
+                                          ? Get.height * 0.46
+                                          : Get.height * 0.46,
                                       width: Get.width,
                                       child: _videoPanelForLocal(),
                                     )
@@ -1041,7 +1224,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       reverseList.isEmpty
@@ -1052,29 +1236,55 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                               child: ListView.builder(
                                                   itemCount: reverseList.length,
                                                   reverse: true,
-                                                  padding: EdgeInsets.only(bottom: 10),
-                                                  itemBuilder: (context, index) {
+                                                  padding: EdgeInsets.only(
+                                                      bottom: 10),
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     return Row(
                                                       children: [
                                                         Padding(
-                                                          padding: const EdgeInsets.all(4.0),
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(4.0),
                                                           child: CircleAvatar(
-                                                            backgroundColor: Get.theme.primaryColor,
-                                                            child: reverseList[index].profile == ""
+                                                            backgroundColor: Get
+                                                                .theme
+                                                                .primaryColor,
+                                                            child: reverseList[
+                                                                            index]
+                                                                        .profile ==
+                                                                    ""
                                                                 ? Image.asset(
-                                                                    Images.deafultUser,
+                                                                    Images
+                                                                        .deafultUser,
                                                                     height: 40,
                                                                     width: 30,
                                                                   )
                                                                 : CachedNetworkImage(
-                                                                    imageUrl: '${reverseList[index].profile}',
-                                                                    imageBuilder: (context, imageProvider) => CircleAvatar(
-                                                                      backgroundImage: NetworkImage('${reverseList[index].profile}'),
+                                                                    imageUrl:
+                                                                        '${reverseList[index].profile}',
+                                                                    imageBuilder:
+                                                                        (context,
+                                                                                imageProvider) =>
+                                                                            CircleAvatar(
+                                                                      backgroundImage:
+                                                                          NetworkImage(
+                                                                              '${reverseList[index].profile}'),
                                                                     ),
-                                                                    placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                                                    errorWidget: (context, url, error) => Image.asset(
-                                                                      Images.deafultUser,
-                                                                      height: 40,
+                                                                    placeholder: (context,
+                                                                            url) =>
+                                                                        const Center(
+                                                                            child:
+                                                                                CircularProgressIndicator()),
+                                                                    errorWidget: (context,
+                                                                            url,
+                                                                            error) =>
+                                                                        Image
+                                                                            .asset(
+                                                                      Images
+                                                                          .deafultUser,
+                                                                      height:
+                                                                          40,
                                                                       width: 30,
                                                                     ),
                                                                   ),
@@ -1084,27 +1294,58 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                           width: 10,
                                                         ),
                                                         SizedBox(
-                                                          width: Get.width * 0.55,
+                                                          width:
+                                                              Get.width * 0.55,
                                                           child: Column(
-                                                            mainAxisSize: MainAxisSize.min,
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
                                                             children: [
                                                               Text(
-                                                                reverseList[index].userName ?? 'User',
-                                                                style: Get.textTheme.bodyMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                                                reverseList[index]
+                                                                        .userName ??
+                                                                    'User',
+                                                                style: Get
+                                                                    .textTheme
+                                                                    .bodyMedium!
+                                                                    .copyWith(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.bold),
                                                               ).translate(),
                                                               Row(
-                                                                mainAxisSize: MainAxisSize.min,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
                                                                 children: [
                                                                   Text(
-                                                                    reverseList.isEmpty ? '' : reverseList[index].message!,
-                                                                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
+                                                                    reverseList
+                                                                            .isEmpty
+                                                                        ? ''
+                                                                        : reverseList[index]
+                                                                            .message!,
+                                                                    style: Get
+                                                                        .textTheme
+                                                                        .bodySmall!
+                                                                        .copyWith(
+                                                                            color:
+                                                                                Colors.white),
                                                                   ),
-                                                                  reverseList[index].gift != null && reverseList[index].gift != 'null'
+                                                                  reverseList[index].gift !=
+                                                                              null &&
+                                                                          reverseList[index].gift !=
+                                                                              'null'
                                                                       ? CachedNetworkImage(
-                                                                          height: 30,
-                                                                          width: 30,
-                                                                          imageUrl: '${global.imgBaseurl}${reverseList[index].gift}',
+                                                                          height:
+                                                                              30,
+                                                                          width:
+                                                                              30,
+                                                                          imageUrl:
+                                                                              '${global.imgBaseurl}${reverseList[index].gift}',
                                                                         )
                                                                       : const SizedBox()
                                                                 ],
@@ -1122,39 +1363,74 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                       Row(
                                         children: [
                                           FutureBuilder(
-                                              future: global.translatedText('say hi..'),
+                                              future: global
+                                                  .translatedText('say hi..'),
                                               builder: (context, snapshot) {
                                                 return SizedBox(
                                                   height: 40,
                                                   width: Get.width * 0.4,
                                                   child: TextFormField(
-                                                    style: const TextStyle(fontSize: 12, color: Colors.white),
-                                                    controller: messageController,
-                                                    keyboardType: TextInputType.text,
+                                                    style: const TextStyle(
+                                                        fontSize: 12,
+                                                        color: Colors.white),
+                                                    controller:
+                                                        messageController,
+                                                    keyboardType:
+                                                        TextInputType.text,
                                                     cursorColor: Colors.white,
                                                     decoration: InputDecoration(
-                                                        fillColor: Colors.black38,
+                                                        fillColor:
+                                                            Colors.black38,
                                                         filled: true,
-                                                        hintStyle: const TextStyle(fontSize: 14, color: Colors.white),
-                                                        helperStyle: TextStyle(color: Get.theme.primaryColor),
-                                                        contentPadding: EdgeInsets.all(10.0),
-                                                        enabledBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.transparent),
-                                                          borderRadius: BorderRadius.circular(20),
+                                                        hintStyle: const TextStyle(
+                                                            fontSize: 14,
+                                                            color:
+                                                                Colors.white),
+                                                        helperStyle: TextStyle(
+                                                            color: Get.theme
+                                                                .primaryColor),
+                                                        contentPadding:
+                                                            EdgeInsets.all(
+                                                                10.0),
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide: BorderSide(
+                                                              color: Colors
+                                                                  .transparent),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
                                                         ),
-                                                        focusedErrorBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.transparent),
-                                                          borderRadius: BorderRadius.circular(20),
+                                                        focusedErrorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide: BorderSide(
+                                                              color: Colors
+                                                                  .transparent),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
                                                         ),
-                                                        errorBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.transparent),
-                                                          borderRadius: BorderRadius.circular(20),
+                                                        errorBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide: BorderSide(
+                                                              color: Colors
+                                                                  .transparent),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
                                                         ),
-                                                        focusedBorder: OutlineInputBorder(
-                                                          borderSide: BorderSide(color: Colors.transparent),
-                                                          borderRadius: BorderRadius.circular(20),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderSide: BorderSide(
+                                                              color: Colors
+                                                                  .transparent),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(20),
                                                         ),
-                                                        hintText: snapshot.data ?? 'say hi..',
+                                                        hintText:
+                                                            snapshot.data ??
+                                                                'say hi..',
                                                         prefixIcon: Icon(
                                                           Icons.chat,
                                                           color: Colors.white,
@@ -1168,9 +1444,13 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                           ),
                                           InkWell(
                                             onTap: () {
-                                              if (messageController.text != "") {
-                                                sendChannelMessage(messageController.text, null);
-                                                if (liveController.isJoinAsChat) {
+                                              if (messageController.text !=
+                                                  "") {
+                                                sendChannelMessage(
+                                                    messageController.text,
+                                                    null);
+                                                if (liveController
+                                                    .isJoinAsChat) {
                                                 } else {
                                                   messageController.clear();
                                                 }
@@ -1178,9 +1458,14 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                             },
                                             child: Container(
                                               padding: const EdgeInsets.all(8),
-                                              margin: const EdgeInsets.only(top: 8),
+                                              margin:
+                                                  const EdgeInsets.only(top: 8),
                                               alignment: Alignment.center,
-                                              decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.black38,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
                                               child: Icon(
                                                 Icons.send,
                                                 color: Colors.white,
@@ -1207,13 +1492,23 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      liveController.createLiveAstrologerShareLink(astrologerName2!, astrologerId2!, token2!, channel2!, charge2!, videoCallCharge2!);
+                                      liveController
+                                          .createLiveAstrologerShareLink(
+                                              astrologerName2!,
+                                              astrologerId2!,
+                                              token2!,
+                                              channel2!,
+                                              charge2!,
+                                              videoCallCharge2!);
                                     },
                                     child: Container(
                                       padding: const EdgeInsets.all(8),
                                       margin: const EdgeInsets.only(top: 8),
                                       alignment: Alignment.center,
-                                      decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                      decoration: BoxDecoration(
+                                          color: Colors.black38,
+                                          borderRadius:
+                                              BorderRadius.circular(20)),
                                       child: Icon(
                                         Icons.send,
                                         color: Colors.white,
@@ -1221,7 +1516,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                       ),
                                     ),
                                   ),
-                                  GetBuilder<GiftController>(builder: (giftController) {
+                                  GetBuilder<GiftController>(
+                                      builder: (giftController) {
                                     return GestureDetector(
                                       onTap: () async {
                                         print('gift sent');
@@ -1244,144 +1540,223 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                 children: [
                                                   Expanded(
                                                     flex: 2,
-                                                    child: GetBuilder<GiftController>(builder: (c) {
-                                                      return ListView(children: [
-                                                        Center(
-                                                          child: Wrap(
-                                                            children: [
-                                                              for (int index = 0; index < giftController.giftList.length; index++)
-                                                                SizedBox(
-                                                                  height: 100,
-                                                                  width: 110,
-                                                                  child: Column(
-                                                                    mainAxisSize: MainAxisSize.min,
-                                                                    children: [
-                                                                      GestureDetector(
-                                                                        onTap: () {
-                                                                          giftController.updateOntap(index);
-                                                                        },
-                                                                        child: Container(
-                                                                          height: 60,
-                                                                          width: 60,
-                                                                          padding: const EdgeInsets.all(5),
-                                                                          decoration: BoxDecoration(
-                                                                            color: giftController.giftList[index].isSelected ?? false ? Color.fromARGB(255, 196, 192, 192) : Colors.transparent,
-                                                                          ),
-                                                                          child: CachedNetworkImage(
-                                                                            imageUrl: '${global.imgBaseurl}${giftController.giftList[index].image}',
-                                                                            imageBuilder: (context, imageProvider) {
-                                                                              return Image.network(
-                                                                                "${global.imgBaseurl}${giftController.giftList[index].image}",
-                                                                                height: 40,
-                                                                                width: 40,
-                                                                                fit: BoxFit.cover,
-                                                                              );
+                                                    child: GetBuilder<
+                                                            GiftController>(
+                                                        builder: (c) {
+                                                      return ListView(
+                                                          children: [
+                                                            Center(
+                                                              child: Wrap(
+                                                                children: [
+                                                                  for (int index =
+                                                                          0;
+                                                                      index <
+                                                                          giftController
+                                                                              .giftList
+                                                                              .length;
+                                                                      index++)
+                                                                    SizedBox(
+                                                                      height:
+                                                                          100,
+                                                                      width:
+                                                                          110,
+                                                                      child:
+                                                                          Column(
+                                                                        mainAxisSize:
+                                                                            MainAxisSize.min,
+                                                                        children: [
+                                                                          GestureDetector(
+                                                                            onTap:
+                                                                                () {
+                                                                              giftController.updateOntap(index);
                                                                             },
-                                                                            placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                                                            errorWidget: (context, url, error) {
-                                                                              return Image.asset(
-                                                                                Images.palmistry,
-                                                                                fit: BoxFit.fill,
-                                                                                height: 40,
-                                                                                width: 40,
-                                                                              );
-                                                                            },
+                                                                            child:
+                                                                                Container(
+                                                                              height: 60,
+                                                                              width: 60,
+                                                                              padding: const EdgeInsets.all(5),
+                                                                              decoration: BoxDecoration(
+                                                                                color: giftController.giftList[index].isSelected ?? false ? Color.fromARGB(255, 196, 192, 192) : Colors.transparent,
+                                                                              ),
+                                                                              child: CachedNetworkImage(
+                                                                                imageUrl: '${global.imgBaseurl}${giftController.giftList[index].image}',
+                                                                                imageBuilder: (context, imageProvider) {
+                                                                                  return Image.network(
+                                                                                    "${global.imgBaseurl}${giftController.giftList[index].image}",
+                                                                                    height: 40,
+                                                                                    width: 40,
+                                                                                    fit: BoxFit.cover,
+                                                                                  );
+                                                                                },
+                                                                                placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                                                                                errorWidget: (context, url, error) {
+                                                                                  return Image.asset(
+                                                                                    Images.palmistry,
+                                                                                    fit: BoxFit.fill,
+                                                                                    height: 40,
+                                                                                    width: 40,
+                                                                                  );
+                                                                                },
+                                                                              ),
+                                                                            ),
                                                                           ),
-                                                                        ),
+                                                                          Text(
+                                                                              giftController.giftList[index].name,
+                                                                              style: Get.textTheme.bodyText2!.copyWith(
+                                                                                fontSize: 12,
+                                                                                color: Colors.white,
+                                                                              )).translate(),
+                                                                          Text(
+                                                                              '${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)} ${giftController.giftList[index].amount}',
+                                                                              style: Get.textTheme.bodyText2!.copyWith(
+                                                                                fontSize: 10,
+                                                                                color: Get.theme.primaryColor,
+                                                                              ))
+                                                                        ],
                                                                       ),
-                                                                      Text(giftController.giftList[index].name,
-                                                                          style: Get.textTheme.bodyText2!.copyWith(
-                                                                            fontSize: 12,
-                                                                            color: Colors.white,
-                                                                          )).translate(),
-                                                                      Text('${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)} ${giftController.giftList[index].amount}',
-                                                                          style: Get.textTheme.bodyText2!.copyWith(
-                                                                            fontSize: 10,
-                                                                            color: Get.theme.primaryColor,
-                                                                          ))
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ]);
+                                                                    ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ]);
                                                     }),
                                                   ),
                                                   Expanded(
                                                     flex: 1,
                                                     child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
                                                       children: [
                                                         TextButton(
-                                                            child: Text('Recharge',
-                                                                style: TextStyle(
+                                                            child: Text(
+                                                                'Recharge',
+                                                                style:
+                                                                    TextStyle(
                                                                   fontSize: 10,
-                                                                  color: Colors.black,
-                                                                  fontWeight: FontWeight.bold,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
                                                                 )).translate(),
                                                             style: ButtonStyle(
-                                                                padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(6)),
-                                                                foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                                                                backgroundColor: MaterialStateProperty.all(Colors.white),
-                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                                                                  borderRadius: BorderRadius.circular(20),
-                                                                  side: BorderSide(color: Colors.orange.shade200),
+                                                                padding:
+                                                                    MaterialStateProperty.all<EdgeInsets>(
+                                                                        EdgeInsets.all(
+                                                                            6)),
+                                                                foregroundColor:
+                                                                    MaterialStateProperty.all<Color>(
+                                                                        Colors
+                                                                            .black),
+                                                                backgroundColor:
+                                                                    MaterialStateProperty.all(
+                                                                        Colors
+                                                                            .white),
+                                                                shape: MaterialStateProperty.all<
+                                                                        RoundedRectangleBorder>(
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20),
+                                                                  side: BorderSide(
+                                                                      color: Colors
+                                                                          .orange
+                                                                          .shade200),
                                                                 ))),
                                                             onPressed: () async {
                                                               Get.back();
-                                                              global.showOnlyLoaderDialog(context);
-                                                              await walletController.getAmount();
-                                                              global.hideLoader();
-                                                              openBottomSheetRechrage(context, 0, true);
+                                                              global
+                                                                  .showOnlyLoaderDialog(
+                                                                      context);
+                                                              await walletController
+                                                                  .getAmount();
+                                                              global
+                                                                  .hideLoader();
+                                                              openBottomSheetRechrage(
+                                                                  context,
+                                                                  0,
+                                                                  true);
                                                             }),
-                                                        Text('Current Balance: ${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)}${global.splashController.currentUser?.walletAmount.toString()}',
-                                                            style: Get.textTheme.bodyText2!.copyWith(
+                                                        Text(
+                                                            'Current Balance: ${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)}${global.splashController.currentUser?.walletAmount.toString()}',
+                                                            style: Get.textTheme
+                                                                .bodyText2!
+                                                                .copyWith(
                                                               fontSize: 12,
-                                                              color: Get.theme.primaryColor,
+                                                              color: Get.theme
+                                                                  .primaryColor,
                                                             )).translate(),
                                                         GestureDetector(
                                                           onTap: () {
                                                             Get.dialog(
                                                               AlertDialog(
-                                                                titlePadding: const EdgeInsets.all(0),
-                                                                contentPadding: const EdgeInsets.all(4),
+                                                                titlePadding:
+                                                                    const EdgeInsets
+                                                                        .all(0),
+                                                                contentPadding:
+                                                                    const EdgeInsets
+                                                                        .all(4),
                                                                 title: Column(
-                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .start,
                                                                   children: [
                                                                     GestureDetector(
-                                                                      onTap: () {
+                                                                      onTap:
+                                                                          () {
                                                                         Get.back();
                                                                       },
-                                                                      child: Align(
-                                                                        alignment: Alignment.topRight,
-                                                                        child: Icon(Icons.close),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment:
+                                                                            Alignment.topRight,
+                                                                        child: Icon(
+                                                                            Icons.close),
                                                                       ),
                                                                     ),
                                                                     Text(
                                                                       'How Donation works?',
-                                                                      style: TextStyle(fontSize: 18),
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              18),
                                                                     ).translate()
                                                                   ],
                                                                 ),
-                                                                content: ListView(
-                                                                  padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
-                                                                  shrinkWrap: true,
-                                                                  physics: NeverScrollableScrollPhysics(),
+                                                                content:
+                                                                    ListView(
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      vertical:
+                                                                          15,
+                                                                      horizontal:
+                                                                          12),
+                                                                  shrinkWrap:
+                                                                      true,
+                                                                  physics:
+                                                                      NeverScrollableScrollPhysics(),
                                                                   children: [
-                                                                    Text('1. Donation is a virtual gift.').translate(),
+                                                                    Text('1. Donation is a virtual gift.')
+                                                                        .translate(),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
-                                                                    Text('2. Donation is a valuntary & non-refundable.').translate(),
+                                                                    Text('2. Donation is a valuntary & non-refundable.')
+                                                                        .translate(),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
-                                                                    Text('3. Company doesn\'t guarantee any service in exchage of donation.').translate(),
+                                                                    Text('3. Company doesn\'t guarantee any service in exchage of donation.')
+                                                                        .translate(),
                                                                     const SizedBox(
-                                                                      height: 10,
+                                                                      height:
+                                                                          10,
                                                                     ),
-                                                                    Text('4. Donation can be encashed by the astrologer in monetary terms as per company policies.').translate(),
+                                                                    Text('4. Donation can be encashed by the astrologer in monetary terms as per company policies.')
+                                                                        .translate(),
                                                                   ],
                                                                 ),
                                                               ),
@@ -1393,45 +1768,105 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                           ),
                                                         ),
                                                         TextButton(
-                                                            child: Text('Send Gift',
-                                                                style: TextStyle(
+                                                            child: Text(
+                                                                'Send Gift',
+                                                                style:
+                                                                    TextStyle(
                                                                   fontSize: 10,
-                                                                  color: Colors.black,
-                                                                  fontWeight: FontWeight.bold,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
                                                                 )).translate(),
                                                             style: ButtonStyle(
-                                                                padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(6)),
-                                                                foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
-                                                                backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
-                                                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                                                                  borderRadius: BorderRadius.circular(20),
-                                                                  side: BorderSide(color: Colors.black12),
+                                                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                                                    EdgeInsets.all(
+                                                                        6)),
+                                                                foregroundColor:
+                                                                    MaterialStateProperty.all<Color>(
+                                                                        Colors
+                                                                            .black),
+                                                                backgroundColor:
+                                                                    MaterialStateProperty.all(Get
+                                                                        .theme
+                                                                        .primaryColor),
+                                                                shape: MaterialStateProperty.all<
+                                                                        RoundedRectangleBorder>(
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20),
+                                                                  side: BorderSide(
+                                                                      color: Colors
+                                                                          .black12),
                                                                 ))),
                                                             onPressed: () async {
-                                                              if (giftController.giftSelectIndex != null) {
-                                                                double wallet = global.splashController.currentUser?.walletAmount ?? 0.0;
-                                                                if (wallet < giftController.giftList[giftController.giftSelectIndex!].amount) {
-                                                                  global.showToast(
-                                                                    message: 'you do not have sufficient balance',
-                                                                    textColor: global.textColor,
-                                                                    bgColor: global.toastBackGoundColor,
+                                                              if (giftController
+                                                                      .giftSelectIndex !=
+                                                                  null) {
+                                                                double wallet = global
+                                                                        .splashController
+                                                                        .currentUser
+                                                                        ?.walletAmount ??
+                                                                    0.0;
+                                                                if (wallet <
+                                                                    giftController
+                                                                        .giftList[
+                                                                            giftController.giftSelectIndex!]
+                                                                        .amount) {
+                                                                  global
+                                                                      .showToast(
+                                                                    message:
+                                                                        'you do not have sufficient balance',
+                                                                    textColor:
+                                                                        global
+                                                                            .textColor,
+                                                                    bgColor: global
+                                                                        .toastBackGoundColor,
                                                                   );
                                                                 } else {
                                                                   Get.back(); //back from send gift bottom sheet
-                                                                  global.showOnlyLoaderDialog(context);
-                                                                  await giftController.sendGift(giftController.giftList[giftController.giftSelectIndex!].id, widget.astrologerId, double.parse(giftController.giftList[giftController.giftSelectIndex!].amount.toString()));
-                                                                  global.hideLoader();
-                                                                  if (giftController.isGiftSend) {
-                                                                    sendChannelMessage('Send Gift ', giftController.giftList[giftController.giftSelectIndex!].image);
-                                                                    giftController.isGiftSend = false;
-                                                                    giftController.update();
+                                                                  global.showOnlyLoaderDialog(
+                                                                      context);
+                                                                  await giftController.sendGift(
+                                                                      giftController
+                                                                          .giftList[giftController
+                                                                              .giftSelectIndex!]
+                                                                          .id,
+                                                                      widget
+                                                                          .astrologerId,
+                                                                      double.parse(giftController
+                                                                          .giftList[
+                                                                              giftController.giftSelectIndex!]
+                                                                          .amount
+                                                                          .toString()));
+                                                                  global
+                                                                      .hideLoader();
+                                                                  if (giftController
+                                                                      .isGiftSend) {
+                                                                    sendChannelMessage(
+                                                                        'Send Gift ',
+                                                                        giftController
+                                                                            .giftList[giftController.giftSelectIndex!]
+                                                                            .image);
+                                                                    giftController
+                                                                            .isGiftSend =
+                                                                        false;
+                                                                    giftController
+                                                                        .update();
                                                                   }
                                                                 }
                                                               } else {
-                                                                global.showToast(
-                                                                  message: 'Please select gift',
-                                                                  textColor: global.textColor,
-                                                                  bgColor: global.toastBackGoundColor,
+                                                                global
+                                                                    .showToast(
+                                                                  message:
+                                                                      'Please select gift',
+                                                                  textColor: global
+                                                                      .textColor,
+                                                                  bgColor: global
+                                                                      .toastBackGoundColor,
                                                                 );
                                                               }
                                                             })
@@ -1446,9 +1881,13 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.all(8),
-                                        margin: const EdgeInsets.only(top: 8, bottom: 8),
+                                        margin: const EdgeInsets.only(
+                                            top: 8, bottom: 8),
                                         alignment: Alignment.center,
-                                        decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                        decoration: BoxDecoration(
+                                            color: Colors.black38,
+                                            borderRadius:
+                                                BorderRadius.circular(20)),
                                         child: Icon(
                                           CupertinoIcons.gift,
                                           color: Colors.white,
@@ -1459,14 +1898,17 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                   }),
                                   GestureDetector(
                                     onTap: () async {
-                                      await liveController.getWaitList(channel2!);
-                                      await liveController.getLiveuserData(channel2!);
+                                      await liveController
+                                          .getWaitList(channel2!);
+                                      await liveController
+                                          .getLiveuserData(channel2!);
                                       await liveController.onlineOfflineUser();
                                       wailtListDialog();
                                     },
                                     child: CircleAvatar(
                                         radius: 15,
-                                        backgroundColor: Colors.black.withOpacity(0.35),
+                                        backgroundColor:
+                                            Colors.black.withOpacity(0.35),
                                         child: Icon(
                                           FontAwesomeIcons.hourglassEnd,
                                           size: 15,
@@ -1474,7 +1916,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                         )),
                                   ),
                                   GetBuilder<LiveController>(builder: (c) {
-                                    return liveController.isImInWaitList == false
+                                    return liveController.isImInWaitList ==
+                                            false
                                         ? InkWell(
                                             onTap: () {
                                               // Get.to(() => AgoraDemo2());
@@ -1483,9 +1926,14 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                             },
                                             child: Container(
                                               padding: const EdgeInsets.all(8),
-                                              margin: const EdgeInsets.only(top: 8),
+                                              margin:
+                                                  const EdgeInsets.only(top: 8),
                                               alignment: Alignment.center,
-                                              decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                              decoration: BoxDecoration(
+                                                  color: Colors.black38,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
                                               child: Icon(
                                                 Icons.phone,
                                                 color: Colors.white,
@@ -1498,10 +1946,12 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                               removeFromCallConfirmationDialog();
                                             },
                                             child: Padding(
-                                              padding: const EdgeInsets.only(top: 08),
+                                              padding: const EdgeInsets.only(
+                                                  top: 08),
                                               child: CircleAvatar(
                                                   radius: 15,
-                                                  backgroundColor: Colors.black.withOpacity(0.35),
+                                                  backgroundColor: Colors.black
+                                                      .withOpacity(0.35),
                                                   child: Icon(
                                                     Icons.close,
                                                     size: 18,
@@ -1511,12 +1961,17 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                           );
                                   }),
                                   Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 6),
                                     margin: const EdgeInsets.only(top: 8),
-                                    decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                    decoration: BoxDecoration(
+                                        color: Colors.black38,
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
                                     child: Text(
                                       "${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)}$charge2/m",
-                                      style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
+                                      style: Get.textTheme.bodySmall!
+                                          .copyWith(color: Colors.white),
                                     ),
                                   )
                                 ],
@@ -1525,266 +1980,123 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                              FutureBuilder(
-                                  future: global.translatedText("Warning - Don't close the app without leaving running session."),
-                                  builder: (context, snapshot) {
-                                    return Container(
-                                        margin: EdgeInsets.only(bottom: 5, left: 5),
-                                        padding: EdgeInsets.only(top: 3, left: 3, right: 3),
-                                        height: 20,
-                                        color: Colors.black.withOpacity(0.9),
-                                        child: Marquee(
-                                          text: snapshot.data ?? "Warning - Don't close the app without leaving running session.",
-                                          style: TextStyle(color: Colors.red, fontSize: 10),
-                                          scrollAxis: Axis.horizontal,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          blankSpace: 20.0,
-                                          velocity: 80.0,
-                                          pauseAfterRound: Duration(milliseconds: 500),
-                                          startPadding: 10.0,
-                                          accelerationDuration: Duration(milliseconds: 500),
-                                          accelerationCurve: Curves.linear,
-                                          decelerationDuration: Duration(milliseconds: 500),
-                                          decelerationCurve: Curves.easeOut,
-                                        ));
-                                  }),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  FutureBuilder(
+                                      future: global.translatedText(
+                                          "Warning - Don't close the app without leaving running session."),
+                                      builder: (context, snapshot) {
+                                        return Container(
+                                            margin: EdgeInsets.only(
+                                                bottom: 5, left: 5),
+                                            padding: EdgeInsets.only(
+                                                top: 3, left: 3, right: 3),
+                                            height: 20,
+                                            color:
+                                                Colors.black.withOpacity(0.9),
+                                            child: Marquee(
+                                              text: snapshot.data ??
+                                                  "Warning - Don't close the app without leaving running session.",
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize: 10),
+                                              scrollAxis: Axis.horizontal,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              blankSpace: 20.0,
+                                              velocity: 80.0,
+                                              pauseAfterRound:
+                                                  Duration(milliseconds: 500),
+                                              startPadding: 10.0,
+                                              accelerationDuration:
+                                                  Duration(milliseconds: 500),
+                                              accelerationCurve: Curves.linear,
+                                              decelerationDuration:
+                                                  Duration(milliseconds: 500),
+                                              decelerationCurve: Curves.easeOut,
+                                            ));
+                                      }),
                                   Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Platform.isIOS
-                                          ? Padding(
-                                              padding: const EdgeInsets.only(right: 8.0),
-                                              child: GestureDetector(
-                                                onTap: () async {
-                                                  global.showOnlyLoaderDialog(context);
-                                                  await bottomNavigationController.getLiveAstrologerList();
-                                                  global.hideLoader();
-                                                  bottomNavigationController.anotherLiveAstrologers = bottomNavigationController.liveAstrologer.where((element) => element.astrologerId != astrologerId2).toList();
-
-                                                  showModalBottomSheet(
-                                                      context: context,
-                                                      shape: RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.vertical(
-                                                          top: Radius.circular(10),
-                                                        ),
-                                                      ),
-                                                      backgroundColor: Colors.white,
-                                                      builder: (context) {
-                                                        return Padding(
-                                                          padding: const EdgeInsets.all(8.0),
-                                                          child: Column(
-                                                            mainAxisSize: MainAxisSize.min,
-                                                            children: [
-                                                              Container(
-                                                                height: 3,
-                                                                width: 40,
-                                                                color: Colors.grey,
-                                                              ),
-                                                              Text("Check other live sessions").translate(),
-                                                              Divider(),
-                                                              bottomNavigationController.anotherLiveAstrologers.isEmpty
-                                                                  ? Expanded(
-                                                                      flex: 3,
-                                                                      child: Container(
-                                                                        child: Center(
-                                                                          child: Text("No Astrologer available").translate(),
-                                                                        ),
-                                                                      ),
-                                                                    )
-                                                                  : Expanded(
-                                                                      flex: 3,
-                                                                      child: ListView(children: [
-                                                                        Center(
-                                                                          child: Wrap(
-                                                                            children: [
-                                                                              for (int index = 0; index < bottomNavigationController.anotherLiveAstrologers.length; index++)
-                                                                                GestureDetector(
-                                                                                  onTap: () {
-                                                                                    Get.back();
-                                                                                    leave();
-                                                                                    Get.back();
-
-                                                                                    Future.delayed(Duration(milliseconds: 50)).then((value) {
-                                                                                      Get.to(() => LiveAstrologerScreen(
-                                                                                            token: bottomNavigationController.anotherLiveAstrologers[index].token,
-                                                                                            channel: bottomNavigationController.anotherLiveAstrologers[index].channelName,
-                                                                                            astrologerName: bottomNavigationController.anotherLiveAstrologers[index].name,
-                                                                                            astrologerId: bottomNavigationController.anotherLiveAstrologers[index].astrologerId,
-                                                                                            isFromHome: true,
-                                                                                            charge: bottomNavigationController.anotherLiveAstrologers[index].charge,
-                                                                                            isFollow: bottomNavigationController.anotherLiveAstrologers[index].isFollow!,
-                                                                                            isForLiveCallAcceptDecline: false,
-                                                                                            videoCallCharge: bottomNavigationController.anotherLiveAstrologers[index].videoCallRate,
-                                                                                          ));
-                                                                                    });
-                                                                                  },
-                                                                                  child: Container(
-                                                                                    height: 100,
-                                                                                    padding: const EdgeInsets.all(10),
-                                                                                    child: Column(
-                                                                                      mainAxisSize: MainAxisSize.min,
-                                                                                      children: [
-                                                                                        bottomNavigationController.anotherLiveAstrologers[index].profileImage == ""
-                                                                                            ? CircleAvatar(
-                                                                                                radius: 30,
-                                                                                                backgroundColor: Get.theme.primaryColor,
-                                                                                                child: Image.asset(
-                                                                                                  Images.deafultUser,
-                                                                                                  fit: BoxFit.fill,
-                                                                                                  height: 40,
-                                                                                                ))
-                                                                                            : CachedNetworkImage(
-                                                                                                imageUrl: "${global.imgBaseurl}${bottomNavigationController.anotherLiveAstrologers[index].profileImage}",
-                                                                                                imageBuilder: (context, imageProvider) {
-                                                                                                  return CircleAvatar(
-                                                                                                    radius: 30,
-                                                                                                    backgroundColor: Colors.white,
-                                                                                                    backgroundImage: imageProvider,
-                                                                                                  );
-                                                                                                },
-                                                                                                placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                                                                                errorWidget: (context, url, error) {
-                                                                                                  return CircleAvatar(
-                                                                                                      radius: 30,
-                                                                                                      backgroundColor: Colors.white,
-                                                                                                      child: Image.asset(
-                                                                                                        Images.deafultUser,
-                                                                                                        fit: BoxFit.fill,
-                                                                                                        height: 40,
-                                                                                                      ));
-                                                                                                },
-                                                                                              ),
-                                                                                        Text(
-                                                                                          bottomNavigationController.anotherLiveAstrologers[index].name,
-                                                                                          style: Get.textTheme.bodyText2!.copyWith(fontSize: 10),
-                                                                                        ).translate(),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ),
-                                                                            ],
-                                                                          ),
-                                                                        ),
-                                                                      ]),
-                                                                    ),
-                                                              Expanded(
-                                                                flex: 1,
-                                                                child: SizedBox(
-                                                                  child: Row(
-                                                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                                    children: [
-                                                                      ElevatedButton(
-                                                                        onPressed: () {
-                                                                          leave();
-                                                                          if (!widget.isFromHome) {
-                                                                            bottomNavigationController.setBottomIndex(0, 0);
-                                                                            Get.back();
-                                                                          } else {
-                                                                            Get.back();
-                                                                            Get.back();
-                                                                          }
-                                                                        },
-                                                                        child: Text(
-                                                                          'Leave',
-                                                                          style: TextStyle(color: Colors.black),
-                                                                        ).translate(),
-                                                                        style: ButtonStyle(
-                                                                          shape: MaterialStateProperty.all(
-                                                                            RoundedRectangleBorder(
-                                                                              borderRadius: BorderRadius.circular(20),
-                                                                            ),
-                                                                          ),
-                                                                          fixedSize: MaterialStateProperty.all(Size.fromWidth(Get.width * 0.4)),
-                                                                          padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 25, vertical: 15)),
-                                                                          backgroundColor: MaterialStateProperty.all(Colors.grey),
-                                                                          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 12, color: Colors.black)),
-                                                                        ),
-                                                                      ),
-                                                                      ElevatedButton(
-                                                                        onPressed: () async {
-                                                                          leave();
-                                                                          global.showOnlyLoaderDialog(context);
-                                                                          await followAstrologerController.addFollowers(astrologerId2!);
-                                                                          global.hideLoader();
-                                                                        },
-                                                                        child: Text(
-                                                                          'Follow & Leave',
-                                                                          style: TextStyle(color: Colors.black),
-                                                                        ).translate(),
-                                                                        style: ButtonStyle(
-                                                                          shape: MaterialStateProperty.all(
-                                                                            RoundedRectangleBorder(
-                                                                              borderRadius: BorderRadius.circular(20),
-                                                                            ),
-                                                                          ),
-                                                                          fixedSize: MaterialStateProperty.all(Size.fromWidth(Get.width * 0.4)),
-                                                                          padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 25, vertical: 15)),
-                                                                          backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
-                                                                          textStyle: MaterialStateProperty.all(TextStyle(fontSize: 12, color: Colors.black)),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
-                                                                ),
-                                                              )
-                                                            ],
-                                                          ),
-                                                        );
-                                                      });
-                                                },
-                                                child: Icon(
-                                                  Icons.arrow_back_ios,
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            )
-                                          : widget.isFromHome
-                                              ? const SizedBox()
-                                              : Padding(
-                                                  padding: const EdgeInsets.only(right: 8.0),
+                                      Row(
+                                        children: [
+                                          Platform.isIOS
+                                              ? Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          right: 8.0),
                                                   child: GestureDetector(
                                                     onTap: () async {
-                                                      global.showOnlyLoaderDialog(context);
-                                                      await bottomNavigationController.getLiveAstrologerList();
+                                                      global
+                                                          .showOnlyLoaderDialog(
+                                                              context);
+                                                      await bottomNavigationController
+                                                          .getLiveAstrologerList();
                                                       global.hideLoader();
-                                                      bottomNavigationController.anotherLiveAstrologers = bottomNavigationController.liveAstrologer.where((element) => element.astrologerId != astrologerId2).toList();
+                                                      bottomNavigationController
+                                                              .anotherLiveAstrologers =
+                                                          bottomNavigationController
+                                                              .liveAstrologer
+                                                              .where((element) =>
+                                                                  element
+                                                                      .astrologerId !=
+                                                                  astrologerId2)
+                                                              .toList();
 
                                                       showModalBottomSheet(
                                                           context: context,
-                                                          shape: RoundedRectangleBorder(
-                                                            borderRadius: BorderRadius.vertical(
-                                                              top: Radius.circular(10),
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .vertical(
+                                                              top: Radius
+                                                                  .circular(10),
                                                             ),
                                                           ),
-                                                          backgroundColor: Colors.white,
+                                                          backgroundColor:
+                                                              Colors.white,
                                                           builder: (context) {
                                                             return Padding(
-                                                              padding: const EdgeInsets.all(8.0),
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(8.0),
                                                               child: Column(
-                                                                mainAxisSize: MainAxisSize.min,
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
                                                                 children: [
                                                                   Container(
                                                                     height: 3,
                                                                     width: 40,
-                                                                    color: Colors.grey,
+                                                                    color: Colors
+                                                                        .grey,
                                                                   ),
-                                                                  Text("Check other live sessions").translate(),
+                                                                  Text("Check other live sessions")
+                                                                      .translate(),
                                                                   Divider(),
-                                                                  bottomNavigationController.anotherLiveAstrologers.isEmpty
+                                                                  bottomNavigationController
+                                                                          .anotherLiveAstrologers
+                                                                          .isEmpty
                                                                       ? Expanded(
-                                                                          flex: 3,
-                                                                          child: Container(
-                                                                            child: Center(
+                                                                          flex:
+                                                                              3,
+                                                                          child:
+                                                                              Container(
+                                                                            child:
+                                                                                Center(
                                                                               child: Text("No Astrologer available").translate(),
                                                                             ),
                                                                           ),
                                                                         )
                                                                       : Expanded(
-                                                                          flex: 3,
-                                                                          child: ListView(children: [
+                                                                          flex:
+                                                                              3,
+                                                                          child:
+                                                                              ListView(children: [
                                                                             Center(
                                                                               child: Wrap(
                                                                                 children: [
@@ -1803,9 +2115,9 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                                                                 astrologerId: bottomNavigationController.anotherLiveAstrologers[index].astrologerId,
                                                                                                 isFromHome: true,
                                                                                                 charge: bottomNavigationController.anotherLiveAstrologers[index].charge,
+                                                                                                isFollow: bottomNavigationController.anotherLiveAstrologers[index].isFollow!,
                                                                                                 isForLiveCallAcceptDecline: false,
                                                                                                 videoCallCharge: bottomNavigationController.anotherLiveAstrologers[index].videoCallRate,
-                                                                                                isFollow: bottomNavigationController.anotherLiveAstrologers[index].isFollow!,
                                                                                               ));
                                                                                         });
                                                                                       },
@@ -1860,12 +2172,16 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                                         ),
                                                                   Expanded(
                                                                     flex: 1,
-                                                                    child: SizedBox(
-                                                                      child: Row(
-                                                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                                    child:
+                                                                        SizedBox(
+                                                                      child:
+                                                                          Row(
+                                                                        mainAxisAlignment:
+                                                                            MainAxisAlignment.spaceAround,
                                                                         children: [
                                                                           ElevatedButton(
-                                                                            onPressed: () {
+                                                                            onPressed:
+                                                                                () {
                                                                               leave();
                                                                               if (!widget.isFromHome) {
                                                                                 bottomNavigationController.setBottomIndex(0, 0);
@@ -1875,11 +2191,13 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                                                 Get.back();
                                                                               }
                                                                             },
-                                                                            child: Text(
+                                                                            child:
+                                                                                Text(
                                                                               'Leave',
                                                                               style: TextStyle(color: Colors.black),
                                                                             ).translate(),
-                                                                            style: ButtonStyle(
+                                                                            style:
+                                                                                ButtonStyle(
                                                                               shape: MaterialStateProperty.all(
                                                                                 RoundedRectangleBorder(
                                                                                   borderRadius: BorderRadius.circular(20),
@@ -1892,18 +2210,20 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                                             ),
                                                                           ),
                                                                           ElevatedButton(
-                                                                            onPressed: () async {
+                                                                            onPressed:
+                                                                                () async {
                                                                               leave();
                                                                               global.showOnlyLoaderDialog(context);
                                                                               await followAstrologerController.addFollowers(astrologerId2!);
                                                                               global.hideLoader();
-                                                                              //Get.back();
                                                                             },
-                                                                            child: Text(
+                                                                            child:
+                                                                                Text(
                                                                               'Follow & Leave',
                                                                               style: TextStyle(color: Colors.black),
                                                                             ).translate(),
-                                                                            style: ButtonStyle(
+                                                                            style:
+                                                                                ButtonStyle(
                                                                               shape: MaterialStateProperty.all(
                                                                                 RoundedRectangleBorder(
                                                                                   borderRadius: BorderRadius.circular(20),
@@ -1925,107 +2245,279 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                           });
                                                     },
                                                     child: Icon(
-                                                      Icons.arrow_back,
-                                                      color: Colors.white,
+                                                      Icons.arrow_back_ios,
+                                                      color: Colors.black,
                                                     ),
                                                   ),
-                                                ),
-                                      Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 8,
-                                            vertical: isImHost
-                                                ? 10
-                                                : remoteIdOfConnectedCustomer != null
-                                                    ? 10
-                                                    : isHostJoinAsAudio
-                                                        ? 10
-                                                        : 4),
-                                        decoration: BoxDecoration(
-                                          color: Colors.black38,
-                                          borderRadius: BorderRadius.circular(25),
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            isImHost
-                                                ? Stack(clipBehavior: Clip.none, children: [
-                                                    CircleAvatar(
-                                                        backgroundColor: Colors.white,
-                                                        radius: 13.0,
-                                                        child: astrologerProfile2 == "" || astrologerId2 == null
-                                                            ? CircleAvatar(
-                                                                backgroundColor: Get.theme.primaryColor,
-                                                                backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
-                                                                radius: 10.0,
-                                                              )
-                                                            : CircleAvatar(
-                                                                backgroundImage: NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
-                                                                radius: 10.0,
-                                                              )),
-                                                    Positioned(
-                                                      top: 10,
-                                                      left: 10,
-                                                      child: CircleAvatar(
-                                                          backgroundColor: Colors.white,
-                                                          radius: 13.0,
-                                                          child: liveController.joinUserProfile == ""
-                                                              ? CircleAvatar(
-                                                                  backgroundColor: Get.theme.primaryColor,
-                                                                  backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
-                                                                  radius: 10.0,
-                                                                )
-                                                              : CircleAvatar(
-                                                                  backgroundImage: NetworkImage("${global.imgBaseurl}${liveController.joinUserProfile}"),
-                                                                  radius: 10.0,
-                                                                )),
-                                                    ),
-                                                  ])
-                                                : remoteIdOfConnectedCustomer != null
-                                                    ? Stack(clipBehavior: Clip.none, children: [
-                                                        CircleAvatar(
-                                                            backgroundColor: Colors.white,
-                                                            radius: 13.0,
-                                                            child: astrologerProfile2 == "" || astrologerId2 == null
-                                                                ? CircleAvatar(
-                                                                    backgroundColor: Get.theme.primaryColor,
-                                                                    backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
-                                                                    radius: 10.0,
-                                                                  )
-                                                                : CircleAvatar(
-                                                                    backgroundImage: NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
-                                                                    radius: 10.0,
-                                                                  )),
-                                                        Positioned(
-                                                          top: 10,
-                                                          left: 10,
-                                                          child: CircleAvatar(
-                                                              backgroundColor: Colors.white,
-                                                              radius: 13.0,
-                                                              child: liveController.joinUserProfile == ""
-                                                                  ? CircleAvatar(
-                                                                      backgroundColor: Get.theme.primaryColor,
-                                                                      backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
-                                                                      radius: 10.0,
-                                                                    )
-                                                                  : CircleAvatar(
-                                                                      backgroundImage: NetworkImage("${global.imgBaseurl}${liveController.joinUserProfile}"),
-                                                                      radius: 10.0,
-                                                                    )),
+                                                )
+                                              : widget.isFromHome
+                                                  ? const SizedBox()
+                                                  : Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              right: 8.0),
+                                                      child: GestureDetector(
+                                                        onTap: () async {
+                                                          global
+                                                              .showOnlyLoaderDialog(
+                                                                  context);
+                                                          await bottomNavigationController
+                                                              .getLiveAstrologerList();
+                                                          global.hideLoader();
+                                                          bottomNavigationController
+                                                                  .anotherLiveAstrologers =
+                                                              bottomNavigationController
+                                                                  .liveAstrologer
+                                                                  .where((element) =>
+                                                                      element
+                                                                          .astrologerId !=
+                                                                      astrologerId2)
+                                                                  .toList();
+
+                                                          showModalBottomSheet(
+                                                              context: context,
+                                                              shape:
+                                                                  RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .vertical(
+                                                                  top: Radius
+                                                                      .circular(
+                                                                          10),
+                                                                ),
+                                                              ),
+                                                              backgroundColor:
+                                                                  Colors.white,
+                                                              builder:
+                                                                  (context) {
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .min,
+                                                                    children: [
+                                                                      Container(
+                                                                        height:
+                                                                            3,
+                                                                        width:
+                                                                            40,
+                                                                        color: Colors
+                                                                            .grey,
+                                                                      ),
+                                                                      Text("Check other live sessions")
+                                                                          .translate(),
+                                                                      Divider(),
+                                                                      bottomNavigationController
+                                                                              .anotherLiveAstrologers
+                                                                              .isEmpty
+                                                                          ? Expanded(
+                                                                              flex: 3,
+                                                                              child: Container(
+                                                                                child: Center(
+                                                                                  child: Text("No Astrologer available").translate(),
+                                                                                ),
+                                                                              ),
+                                                                            )
+                                                                          : Expanded(
+                                                                              flex: 3,
+                                                                              child: ListView(children: [
+                                                                                Center(
+                                                                                  child: Wrap(
+                                                                                    children: [
+                                                                                      for (int index = 0; index < bottomNavigationController.anotherLiveAstrologers.length; index++)
+                                                                                        GestureDetector(
+                                                                                          onTap: () {
+                                                                                            Get.back();
+                                                                                            leave();
+                                                                                            Get.back();
+
+                                                                                            Future.delayed(Duration(milliseconds: 50)).then((value) {
+                                                                                              Get.to(() => LiveAstrologerScreen(
+                                                                                                    token: bottomNavigationController.anotherLiveAstrologers[index].token,
+                                                                                                    channel: bottomNavigationController.anotherLiveAstrologers[index].channelName,
+                                                                                                    astrologerName: bottomNavigationController.anotherLiveAstrologers[index].name,
+                                                                                                    astrologerId: bottomNavigationController.anotherLiveAstrologers[index].astrologerId,
+                                                                                                    isFromHome: true,
+                                                                                                    charge: bottomNavigationController.anotherLiveAstrologers[index].charge,
+                                                                                                    isForLiveCallAcceptDecline: false,
+                                                                                                    videoCallCharge: bottomNavigationController.anotherLiveAstrologers[index].videoCallRate,
+                                                                                                    isFollow: bottomNavigationController.anotherLiveAstrologers[index].isFollow!,
+                                                                                                  ));
+                                                                                            });
+                                                                                          },
+                                                                                          child: Container(
+                                                                                            height: 100,
+                                                                                            padding: const EdgeInsets.all(10),
+                                                                                            child: Column(
+                                                                                              mainAxisSize: MainAxisSize.min,
+                                                                                              children: [
+                                                                                                bottomNavigationController.anotherLiveAstrologers[index].profileImage == ""
+                                                                                                    ? CircleAvatar(
+                                                                                                        radius: 30,
+                                                                                                        backgroundColor: Get.theme.primaryColor,
+                                                                                                        child: Image.asset(
+                                                                                                          Images.deafultUser,
+                                                                                                          fit: BoxFit.fill,
+                                                                                                          height: 40,
+                                                                                                        ))
+                                                                                                    : CachedNetworkImage(
+                                                                                                        imageUrl: "${global.imgBaseurl}${bottomNavigationController.anotherLiveAstrologers[index].profileImage}",
+                                                                                                        imageBuilder: (context, imageProvider) {
+                                                                                                          return CircleAvatar(
+                                                                                                            radius: 30,
+                                                                                                            backgroundColor: Colors.white,
+                                                                                                            backgroundImage: imageProvider,
+                                                                                                          );
+                                                                                                        },
+                                                                                                        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                                                                                                        errorWidget: (context, url, error) {
+                                                                                                          return CircleAvatar(
+                                                                                                              radius: 30,
+                                                                                                              backgroundColor: Colors.white,
+                                                                                                              child: Image.asset(
+                                                                                                                Images.deafultUser,
+                                                                                                                fit: BoxFit.fill,
+                                                                                                                height: 40,
+                                                                                                              ));
+                                                                                                        },
+                                                                                                      ),
+                                                                                                Text(
+                                                                                                  bottomNavigationController.anotherLiveAstrologers[index].name,
+                                                                                                  style: Get.textTheme.bodyText2!.copyWith(fontSize: 10),
+                                                                                                ).translate(),
+                                                                                              ],
+                                                                                            ),
+                                                                                          ),
+                                                                                        ),
+                                                                                    ],
+                                                                                  ),
+                                                                                ),
+                                                                              ]),
+                                                                            ),
+                                                                      Expanded(
+                                                                        flex: 1,
+                                                                        child:
+                                                                            SizedBox(
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.spaceAround,
+                                                                            children: [
+                                                                              ElevatedButton(
+                                                                                onPressed: () {
+                                                                                  leave();
+                                                                                  if (!widget.isFromHome) {
+                                                                                    bottomNavigationController.setBottomIndex(0, 0);
+                                                                                    Get.back();
+                                                                                  } else {
+                                                                                    Get.back();
+                                                                                    Get.back();
+                                                                                  }
+                                                                                },
+                                                                                child: Text(
+                                                                                  'Leave',
+                                                                                  style: TextStyle(color: Colors.black),
+                                                                                ).translate(),
+                                                                                style: ButtonStyle(
+                                                                                  shape: MaterialStateProperty.all(
+                                                                                    RoundedRectangleBorder(
+                                                                                      borderRadius: BorderRadius.circular(20),
+                                                                                    ),
+                                                                                  ),
+                                                                                  fixedSize: MaterialStateProperty.all(Size.fromWidth(Get.width * 0.4)),
+                                                                                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 25, vertical: 15)),
+                                                                                  backgroundColor: MaterialStateProperty.all(Colors.grey),
+                                                                                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 12, color: Colors.black)),
+                                                                                ),
+                                                                              ),
+                                                                              ElevatedButton(
+                                                                                onPressed: () async {
+                                                                                  leave();
+                                                                                  global.showOnlyLoaderDialog(context);
+                                                                                  await followAstrologerController.addFollowers(astrologerId2!);
+                                                                                  global.hideLoader();
+                                                                                  //Get.back();
+                                                                                },
+                                                                                child: Text(
+                                                                                  'Follow & Leave',
+                                                                                  style: TextStyle(color: Colors.black),
+                                                                                ).translate(),
+                                                                                style: ButtonStyle(
+                                                                                  shape: MaterialStateProperty.all(
+                                                                                    RoundedRectangleBorder(
+                                                                                      borderRadius: BorderRadius.circular(20),
+                                                                                    ),
+                                                                                  ),
+                                                                                  fixedSize: MaterialStateProperty.all(Size.fromWidth(Get.width * 0.4)),
+                                                                                  padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 25, vertical: 15)),
+                                                                                  backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
+                                                                                  textStyle: MaterialStateProperty.all(TextStyle(fontSize: 12, color: Colors.black)),
+                                                                                ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                );
+                                                              });
+                                                        },
+                                                        child: Icon(
+                                                          Icons.arrow_back,
+                                                          color: Colors.white,
                                                         ),
-                                                      ])
-                                                    : isHostJoinAsAudio
-                                                        ? Stack(clipBehavior: Clip.none, children: [
+                                                      ),
+                                                    ),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8,
+                                                vertical: isImHost
+                                                    ? 10
+                                                    : remoteIdOfConnectedCustomer !=
+                                                            null
+                                                        ? 10
+                                                        : isHostJoinAsAudio
+                                                            ? 10
+                                                            : 4),
+                                            decoration: BoxDecoration(
+                                              color: Colors.black38,
+                                              borderRadius:
+                                                  BorderRadius.circular(25),
+                                            ),
+                                            child: Row(
+                                              children: [
+                                                isImHost
+                                                    ? Stack(
+                                                        clipBehavior: Clip.none,
+                                                        children: [
                                                             CircleAvatar(
-                                                                backgroundColor: Colors.white,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
                                                                 radius: 13.0,
-                                                                child: astrologerProfile2 == "" || astrologerId2 == null
+                                                                child: astrologerProfile2 ==
+                                                                            "" ||
+                                                                        astrologerId2 ==
+                                                                            null
                                                                     ? CircleAvatar(
-                                                                        backgroundColor: Get.theme.primaryColor,
-                                                                        backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
-                                                                        radius: 10.0,
+                                                                        backgroundColor: Get
+                                                                            .theme
+                                                                            .primaryColor,
+                                                                        backgroundImage:
+                                                                            const AssetImage("assets/images/no_customer_image.png"),
+                                                                        radius:
+                                                                            10.0,
                                                                       )
                                                                     : CircleAvatar(
-                                                                        backgroundImage: NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
-                                                                        radius: 10.0,
+                                                                        backgroundImage:
+                                                                            NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
+                                                                        radius:
+                                                                            10.0,
                                                                       )),
                                                             Positioned(
                                                               top: 10,
@@ -2035,177 +2527,310 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                                   radius: 13.0,
                                                                   child: liveController.joinUserProfile == ""
                                                                       ? CircleAvatar(
-                                                                          backgroundColor: Get.theme.primaryColor,
-                                                                          backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
-                                                                          radius: 10.0,
+                                                                          backgroundColor: Get
+                                                                              .theme
+                                                                              .primaryColor,
+                                                                          backgroundImage:
+                                                                              const AssetImage("assets/images/no_customer_image.png"),
+                                                                          radius:
+                                                                              10.0,
                                                                         )
                                                                       : CircleAvatar(
-                                                                          backgroundImage: NetworkImage("${global.imgBaseurl}${liveController.joinUserProfile}"),
-                                                                          radius: 10.0,
+                                                                          backgroundImage:
+                                                                              NetworkImage("${global.imgBaseurl}${liveController.joinUserProfile}"),
+                                                                          radius:
+                                                                              10.0,
                                                                         )),
                                                             ),
                                                           ])
-                                                        : CircleAvatar(
-                                                            backgroundColor: Colors.white,
-                                                            radius: 18.0,
-                                                            child: astrologerProfile2 == "" || astrologerId2 == null
-                                                                ? CircleAvatar(
-                                                                    backgroundImage: AssetImage(Images.deafultUser),
-                                                                    radius: 15.0,
-                                                                  )
-                                                                : CircleAvatar(
-                                                                    backgroundImage: NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
-                                                                    radius: 15.0,
-                                                                  )),
-                                            SizedBox(
-                                              width: 15,
-                                            ),
-                                            Column(
-                                              children: [
-                                                Text(
-                                                  astrologerName2!,
-                                                  style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
-                                                ).translate(),
-                                                liveController.isJoinAsChat == false
-                                                    ? isImHost
-                                                        ? Text(
-                                                            liveController.joinUserName,
-                                                            style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
-                                                          ).translate()
-                                                        : remoteIdOfConnectedCustomer != null
+                                                    : remoteIdOfConnectedCustomer !=
+                                                            null
+                                                        ? Stack(
+                                                            clipBehavior:
+                                                                Clip.none,
+                                                            children: [
+                                                                CircleAvatar(
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .white,
+                                                                    radius:
+                                                                        13.0,
+                                                                    child: astrologerProfile2 ==
+                                                                                "" ||
+                                                                            astrologerId2 ==
+                                                                                null
+                                                                        ? CircleAvatar(
+                                                                            backgroundColor:
+                                                                                Get.theme.primaryColor,
+                                                                            backgroundImage:
+                                                                                const AssetImage("assets/images/no_customer_image.png"),
+                                                                            radius:
+                                                                                10.0,
+                                                                          )
+                                                                        : CircleAvatar(
+                                                                            backgroundImage:
+                                                                                NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
+                                                                            radius:
+                                                                                10.0,
+                                                                          )),
+                                                                Positioned(
+                                                                  top: 10,
+                                                                  left: 10,
+                                                                  child: CircleAvatar(
+                                                                      backgroundColor: Colors.white,
+                                                                      radius: 13.0,
+                                                                      child: liveController.joinUserProfile == ""
+                                                                          ? CircleAvatar(
+                                                                              backgroundColor: Get.theme.primaryColor,
+                                                                              backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
+                                                                              radius: 10.0,
+                                                                            )
+                                                                          : CircleAvatar(
+                                                                              backgroundImage: NetworkImage("${global.imgBaseurl}${liveController.joinUserProfile}"),
+                                                                              radius: 10.0,
+                                                                            )),
+                                                                ),
+                                                              ])
+                                                        : isHostJoinAsAudio
+                                                            ? Stack(
+                                                                clipBehavior:
+                                                                    Clip.none,
+                                                                children: [
+                                                                    CircleAvatar(
+                                                                        backgroundColor:
+                                                                            Colors
+                                                                                .white,
+                                                                        radius:
+                                                                            13.0,
+                                                                        child: astrologerProfile2 == "" ||
+                                                                                astrologerId2 == null
+                                                                            ? CircleAvatar(
+                                                                                backgroundColor: Get.theme.primaryColor,
+                                                                                backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
+                                                                                radius: 10.0,
+                                                                              )
+                                                                            : CircleAvatar(
+                                                                                backgroundImage: NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
+                                                                                radius: 10.0,
+                                                                              )),
+                                                                    Positioned(
+                                                                      top: 10,
+                                                                      left: 10,
+                                                                      child: CircleAvatar(
+                                                                          backgroundColor: Colors.white,
+                                                                          radius: 13.0,
+                                                                          child: liveController.joinUserProfile == ""
+                                                                              ? CircleAvatar(
+                                                                                  backgroundColor: Get.theme.primaryColor,
+                                                                                  backgroundImage: const AssetImage("assets/images/no_customer_image.png"),
+                                                                                  radius: 10.0,
+                                                                                )
+                                                                              : CircleAvatar(
+                                                                                  backgroundImage: NetworkImage("${global.imgBaseurl}${liveController.joinUserProfile}"),
+                                                                                  radius: 10.0,
+                                                                                )),
+                                                                    ),
+                                                                  ])
+                                                            : CircleAvatar(
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                radius: 18.0,
+                                                                child: astrologerProfile2 ==
+                                                                            "" ||
+                                                                        astrologerId2 ==
+                                                                            null
+                                                                    ? CircleAvatar(
+                                                                        backgroundImage:
+                                                                            AssetImage(Images.deafultUser),
+                                                                        radius:
+                                                                            15.0,
+                                                                      )
+                                                                    : CircleAvatar(
+                                                                        backgroundImage:
+                                                                            NetworkImage("${global.imgBaseurl}$astrologerProfile2"),
+                                                                        radius:
+                                                                            15.0,
+                                                                      )),
+                                                SizedBox(
+                                                  width: 15,
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      astrologerName2!,
+                                                      style: Get
+                                                          .textTheme.bodySmall!
+                                                          .copyWith(
+                                                              color:
+                                                                  Colors.white),
+                                                    ).translate(),
+                                                    liveController
+                                                                .isJoinAsChat ==
+                                                            false
+                                                        ? isImHost
                                                             ? Text(
-                                                                liveController.joinUserName,
-                                                                style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
+                                                                liveController
+                                                                    .joinUserName,
+                                                                style: Get
+                                                                    .textTheme
+                                                                    .bodySmall!
+                                                                    .copyWith(
+                                                                        color: Colors
+                                                                            .white),
                                                               ).translate()
-                                                            : isHostJoinAsAudio
+                                                            : remoteIdOfConnectedCustomer !=
+                                                                    null
                                                                 ? Text(
-                                                                    liveController.joinUserName,
-                                                                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
+                                                                    liveController
+                                                                        .joinUserName,
+                                                                    style: Get
+                                                                        .textTheme
+                                                                        .bodySmall!
+                                                                        .copyWith(
+                                                                            color:
+                                                                                Colors.white),
                                                                   ).translate()
-                                                                : const SizedBox()
-                                                    : Text(
-                                                        liveController.joinUserName,
-                                                        style: Get.textTheme.bodySmall!.copyWith(color: Colors.white),
-                                                      ).translate(),
-                                              ],
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            GetBuilder<LiveController>(builder: (c) {
-                                              return liveController.isJoinAsChat == false
-                                                  ? isImHost
-                                                      ? Image.asset(
-                                                          'assets/images/voice.gif',
-                                                          height: 30,
-                                                          width: 30,
-                                                        )
-                                                      : remoteIdOfConnectedCustomer != null
+                                                                : isHostJoinAsAudio
+                                                                    ? Text(
+                                                                        liveController
+                                                                            .joinUserName,
+                                                                        style: Get
+                                                                            .textTheme
+                                                                            .bodySmall!
+                                                                            .copyWith(color: Colors.white),
+                                                                      ).translate()
+                                                                    : const SizedBox()
+                                                        : Text(
+                                                            liveController
+                                                                .joinUserName,
+                                                            style: Get.textTheme
+                                                                .bodySmall!
+                                                                .copyWith(
+                                                                    color: Colors
+                                                                        .white),
+                                                          ).translate(),
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                GetBuilder<LiveController>(
+                                                    builder: (c) {
+                                                  return liveController
+                                                              .isJoinAsChat ==
+                                                          false
+                                                      ? isImHost
                                                           ? Image.asset(
                                                               'assets/images/voice.gif',
                                                               height: 30,
                                                               width: 30,
                                                             )
-                                                          : isHostJoinAsAudio
+                                                          : remoteIdOfConnectedCustomer !=
+                                                                  null
                                                               ? Image.asset(
                                                                   'assets/images/voice.gif',
                                                                   height: 30,
                                                                   width: 30,
                                                                 )
-                                                              : const SizedBox()
-                                                  : Image.asset(
-                                                      'assets/images/voice.gif',
-                                                      height: 30,
-                                                      width: 30,
-                                                    );
-                                            })
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  GetBuilder<LiveController>(builder: (c) {
-                                    return liveController.isJoinAsChat == false
-                                        ? isImHost
-                                            ? GetBuilder<LiveController>(
-                                                builder: (c) {
-                                                  return CountdownTimer(
-                                                    endTime: liveController.endTime,
-                                                    widgetBuilder: (_, CurrentRemainingTime? time) {
-                                                      if (time == null) {
-                                                        return Text(
-                                                          '00 min 00 sec',
-                                                          style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
+                                                              : isHostJoinAsAudio
+                                                                  ? Image.asset(
+                                                                      'assets/images/voice.gif',
+                                                                      height:
+                                                                          30,
+                                                                      width: 30,
+                                                                    )
+                                                                  : const SizedBox()
+                                                      : Image.asset(
+                                                          'assets/images/voice.gif',
+                                                          height: 30,
+                                                          width: 30,
                                                         );
-                                                      }
-                                                      return Padding(
-                                                        padding: const EdgeInsets.only(left: 10),
-                                                        child: time.min != null
-                                                            ? Container(padding: const EdgeInsets.all(8), alignment: Alignment.center, decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)), child: Text('${time.min} min ${time.sec} sec', style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10)))
-                                                            : Container(
-                                                                padding: const EdgeInsets.all(8),
-                                                                alignment: Alignment.center,
-                                                                decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                                child: Text(
-                                                                  '${time.sec} sec',
-                                                                  style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                                                ),
-                                                              ),
-                                                      );
-                                                    },
-                                                    onEnd: () {
-                                                      if (liveController.isImSplitted) {
-                                                        print("OnEnd called");
-                                                        leave();
-                                                        Get.back();
-                                                      }
-                                                      //call the disconnect method from requested customer
-                                                    },
-                                                  );
-                                                },
-                                              )
-                                            : remoteIdOfConnectedCustomer != null
+                                                })
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      GetBuilder<LiveController>(builder: (c) {
+                                        return liveController.isJoinAsChat ==
+                                                false
+                                            ? isImHost
                                                 ? GetBuilder<LiveController>(
-                                                    builder: (s) {
+                                                    builder: (c) {
                                                       return CountdownTimer(
-                                                        endTime: liveController.endTime,
-                                                        widgetBuilder: (_, CurrentRemainingTime? time) {
+                                                        endTime: liveController
+                                                            .endTime,
+                                                        widgetBuilder: (_,
+                                                            CurrentRemainingTime?
+                                                                time) {
                                                           if (time == null) {
-                                                            return Container(
-                                                              padding: const EdgeInsets.all(8),
-                                                              // margin: const EdgeInsets.only(right: 8),
-                                                              alignment: Alignment.center,
-                                                              decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                              child: Text(
-                                                                '00 min 00 sec3',
-                                                                style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                                              ),
+                                                            return Text(
+                                                              '00 min 00 sec',
+                                                              style: Get
+                                                                  .textTheme
+                                                                  .bodySmall!
+                                                                  .copyWith(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          10),
                                                             );
                                                           }
                                                           return Padding(
-                                                            padding: const EdgeInsets.only(left: 10),
-                                                            child: time.min != null
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 10),
+                                                            child: time.min !=
+                                                                    null
                                                                 ? Container(
-                                                                    padding: const EdgeInsets.all(8),
-                                                                    // margin: const EdgeInsets.only(right: 8),
-                                                                    alignment: Alignment.center,
-                                                                    decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                                    child: Text('${time.min} min ${time.sec} sec', style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10)))
+                                                                    padding:
+                                                                        const EdgeInsets.all(
+                                                                            8),
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .black38,
+                                                                        borderRadius: BorderRadius.circular(
+                                                                            20)),
+                                                                    child: Text(
+                                                                        '${time.min} min ${time.sec} sec',
+                                                                        style: Get
+                                                                            .textTheme
+                                                                            .bodySmall!
+                                                                            .copyWith(color: Colors.white, fontSize: 10)))
                                                                 : Container(
-                                                                    padding: const EdgeInsets.all(8),
-                                                                    // margin: const EdgeInsets.only(right: 8),
-                                                                    alignment: Alignment.center,
-                                                                    decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                            .all(8),
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    decoration: BoxDecoration(
+                                                                        color: Colors
+                                                                            .black38,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(20)),
                                                                     child: Text(
                                                                       '${time.sec} sec',
-                                                                      style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
+                                                                      style: Get
+                                                                          .textTheme
+                                                                          .bodySmall!
+                                                                          .copyWith(
+                                                                              color: Colors.white,
+                                                                              fontSize: 10),
                                                                     ),
                                                                   ),
                                                           );
                                                         },
                                                         onEnd: () {
-                                                          if (liveController.isImSplitted) {
-                                                            print("OnEnd called");
+                                                          if (liveController
+                                                              .isImSplitted) {
+                                                            print(
+                                                                "OnEnd called");
                                                             leave();
                                                             Get.back();
                                                           }
@@ -2214,146 +2839,365 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                                                       );
                                                     },
                                                   )
-                                                : isHostJoinAsAudio
-                                                    ? GetBuilder<LiveController>(
-                                                        builder: (c) {
+                                                : remoteIdOfConnectedCustomer !=
+                                                        null
+                                                    ? GetBuilder<
+                                                        LiveController>(
+                                                        builder: (s) {
                                                           return CountdownTimer(
-                                                            endTime: liveController.endTime,
-                                                            widgetBuilder: (_, CurrentRemainingTime? time) {
-                                                              if (time == null) {
+                                                            endTime:
+                                                                liveController
+                                                                    .endTime,
+                                                            widgetBuilder: (_,
+                                                                CurrentRemainingTime?
+                                                                    time) {
+                                                              if (time ==
+                                                                  null) {
                                                                 return Container(
-                                                                  padding: const EdgeInsets.all(8),
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .all(8),
                                                                   // margin: const EdgeInsets.only(right: 8),
-                                                                  alignment: Alignment.center,
-                                                                  decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                                                  alignment:
+                                                                      Alignment
+                                                                          .center,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Colors
+                                                                          .black38,
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              20)),
                                                                   child: Text(
-                                                                    '00 min 00 sec4',
-                                                                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
+                                                                    '00 min 00 sec3',
+                                                                    style: Get
+                                                                        .textTheme
+                                                                        .bodySmall!
+                                                                        .copyWith(
+                                                                            color:
+                                                                                Colors.white,
+                                                                            fontSize: 10),
                                                                   ),
                                                                 );
                                                               }
                                                               return Padding(
-                                                                padding: const EdgeInsets.only(left: 10),
-                                                                child: time.min != null
-                                                                    ? Container(padding: const EdgeInsets.all(8), alignment: Alignment.center, decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)), child: Text('${time.min} min ${time.sec} sec', style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10)))
-                                                                    : Container(
-                                                                        padding: const EdgeInsets.all(8),
-                                                                        alignment: Alignment.center,
-                                                                        decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                            .only(
+                                                                        left:
+                                                                            10),
+                                                                child: time.min !=
+                                                                        null
+                                                                    ? Container(
+                                                                        padding:
+                                                                            const EdgeInsets.all(
+                                                                                8),
+                                                                        // margin: const EdgeInsets.only(right: 8),
+                                                                        alignment:
+                                                                            Alignment
+                                                                                .center,
+                                                                        decoration: BoxDecoration(
+                                                                            color: Colors
+                                                                                .black38,
+                                                                            borderRadius: BorderRadius.circular(
+                                                                                20)),
                                                                         child: Text(
+                                                                            '${time.min} min ${time.sec} sec',
+                                                                            style:
+                                                                                Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10)))
+                                                                    : Container(
+                                                                        padding:
+                                                                            const EdgeInsets.all(8),
+                                                                        // margin: const EdgeInsets.only(right: 8),
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        decoration: BoxDecoration(
+                                                                            color:
+                                                                                Colors.black38,
+                                                                            borderRadius: BorderRadius.circular(20)),
+                                                                        child:
+                                                                            Text(
                                                                           '${time.sec} sec',
-                                                                          style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
+                                                                          style: Get
+                                                                              .textTheme
+                                                                              .bodySmall!
+                                                                              .copyWith(color: Colors.white, fontSize: 10),
                                                                         ),
                                                                       ),
                                                               );
                                                             },
                                                             onEnd: () {
-                                                              if (liveController.isImSplitted) {
-                                                                print("OnEnd called");
+                                                              if (liveController
+                                                                  .isImSplitted) {
+                                                                print(
+                                                                    "OnEnd called");
                                                                 leave();
                                                                 Get.back();
                                                               }
-
                                                               //call the disconnect method from requested customer
                                                             },
                                                           );
                                                         },
                                                       )
-                                                    : SizedBox()
-                                        : CountdownTimer(
-                                            endTime: liveController.endTime,
-                                            widgetBuilder: (_, CurrentRemainingTime? time) {
-                                              if (time == null) {
-                                                return Container(
-                                                  padding: const EdgeInsets.all(8),
-                                                  // margin: const EdgeInsets.only(right: 8),
-                                                  alignment: Alignment.center,
-                                                  decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                  child: Text(
-                                                    '00min 00sec',
-                                                    style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                                  ),
-                                                );
-                                              }
-                                              return Padding(
-                                                padding: const EdgeInsets.only(left: 10),
-                                                child: time.min != null
-                                                    ? Container(
-                                                        padding: const EdgeInsets.all(8),
-                                                        // margin: const EdgeInsets.only(right: 8),
-                                                        alignment: Alignment.center,
-                                                        decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                        child: Text('${time.min} min ${time.sec} sec', style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10)))
-                                                    : Container(
-                                                        padding: const EdgeInsets.all(8),
-                                                        // margin: const EdgeInsets.only(right: 8),
-                                                        alignment: Alignment.center,
-                                                        decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                        child: Text(
-                                                          '${time.sec} sec',
-                                                          style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                                        ),
+                                                    : isHostJoinAsAudio
+                                                        ? GetBuilder<
+                                                            LiveController>(
+                                                            builder: (c) {
+                                                              return CountdownTimer(
+                                                                endTime:
+                                                                    liveController
+                                                                        .endTime,
+                                                                widgetBuilder: (_,
+                                                                    CurrentRemainingTime?
+                                                                        time) {
+                                                                  if (time ==
+                                                                      null) {
+                                                                    return Container(
+                                                                      padding:
+                                                                          const EdgeInsets.all(
+                                                                              8),
+                                                                      // margin: const EdgeInsets.only(right: 8),
+                                                                      alignment:
+                                                                          Alignment
+                                                                              .center,
+                                                                      decoration: BoxDecoration(
+                                                                          color: Colors
+                                                                              .black38,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(20)),
+                                                                      child:
+                                                                          Text(
+                                                                        '00 min 00 sec4',
+                                                                        style: Get
+                                                                            .textTheme
+                                                                            .bodySmall!
+                                                                            .copyWith(
+                                                                                color: Colors.white,
+                                                                                fontSize: 10),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                  return Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .only(
+                                                                        left:
+                                                                            10),
+                                                                    child: time.min !=
+                                                                            null
+                                                                        ? Container(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8),
+                                                                            alignment: Alignment.center,
+                                                                            decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                                                            child: Text('${time.min} min ${time.sec} sec', style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10)))
+                                                                        : Container(
+                                                                            padding:
+                                                                                const EdgeInsets.all(8),
+                                                                            alignment:
+                                                                                Alignment.center,
+                                                                            decoration:
+                                                                                BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
+                                                                            child:
+                                                                                Text(
+                                                                              '${time.sec} sec',
+                                                                              style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
+                                                                            ),
+                                                                          ),
+                                                                  );
+                                                                },
+                                                                onEnd: () {
+                                                                  if (liveController
+                                                                      .isImSplitted) {
+                                                                    print(
+                                                                        "OnEnd called");
+                                                                    leave();
+                                                                    Get.back();
+                                                                  }
+
+                                                                  //call the disconnect method from requested customer
+                                                                },
+                                                              );
+                                                            },
+                                                          )
+                                                        : SizedBox()
+                                            : CountdownTimer(
+                                                endTime: liveController.endTime,
+                                                widgetBuilder: (_,
+                                                    CurrentRemainingTime?
+                                                        time) {
+                                                  if (time == null) {
+                                                    return Container(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8),
+                                                      // margin: const EdgeInsets.only(right: 8),
+                                                      alignment:
+                                                          Alignment.center,
+                                                      decoration: BoxDecoration(
+                                                          color: Colors.black38,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      20)),
+                                                      child: Text(
+                                                        '00min 00sec',
+                                                        style: Get.textTheme
+                                                            .bodySmall!
+                                                            .copyWith(
+                                                                color: Colors
+                                                                    .white,
+                                                                fontSize: 10),
                                                       ),
+                                                    );
+                                                  }
+                                                  return Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 10),
+                                                    child: time.min != null
+                                                        ? Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8),
+                                                            // margin: const EdgeInsets.only(right: 8),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration: BoxDecoration(
+                                                                color: Colors
+                                                                    .black38,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20)),
+                                                            child: Text(
+                                                                '${time.min} min ${time.sec} sec',
+                                                                style: Get
+                                                                    .textTheme
+                                                                    .bodySmall!
+                                                                    .copyWith(
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            10)))
+                                                        : Container(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8),
+                                                            // margin: const EdgeInsets.only(right: 8),
+                                                            alignment: Alignment
+                                                                .center,
+                                                            decoration: BoxDecoration(
+                                                                color: Colors
+                                                                    .black38,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            20)),
+                                                            child: Text(
+                                                              '${time.sec} sec',
+                                                              style: Get
+                                                                  .textTheme
+                                                                  .bodySmall!
+                                                                  .copyWith(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          10),
+                                                            ),
+                                                          ),
+                                                  );
+                                                },
+                                                onEnd: () {
+                                                  print("OnEnd called");
+                                                  leave();
+                                                  Get.back();
+                                                  //call the disconnect method from requested customer
+                                                },
                                               );
-                                            },
-                                            onEnd: () {
-                                              print("OnEnd called");
-                                              leave();
-                                              Get.back();
-                                              //call the disconnect method from requested customer
-                                            },
-                                          );
-                                  }),
-                                  Row(
-                                    children: [
-                                      isFollowLocal
-                                          ? Container(
-                                              padding: const EdgeInsets.all(8),
-                                              margin: const EdgeInsets.only(right: 8),
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                              child: Text(
-                                                'Following',
-                                                style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                              ).translate(),
-                                            )
-                                          : InkWell(
-                                              onTap: () async {
-                                                global.showOnlyLoaderDialog(context);
-                                                await followAstrologerController.addFollowers(astrologerId2!);
-                                                global.hideLoader();
-                                                if (followAstrologerController.isFollowed) {
-                                                  setState(() {
-                                                    isFollowLocal = true;
-                                                  });
-                                                }
-                                              },
-                                              child: Container(
-                                                padding: const EdgeInsets.all(8),
-                                                margin: const EdgeInsets.only(right: 8),
-                                                alignment: Alignment.center,
-                                                decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                                child: Text(
-                                                  'Follow',
-                                                  style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                                ).translate(),
-                                              ),
+                                      }),
+                                      Row(
+                                        children: [
+                                          isFollowLocal
+                                              ? Container(
+                                                  padding:
+                                                      const EdgeInsets.all(8),
+                                                  margin: const EdgeInsets.only(
+                                                      right: 8),
+                                                  alignment: Alignment.center,
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.black38,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20)),
+                                                  child: Text(
+                                                    'Following',
+                                                    style: Get
+                                                        .textTheme.bodySmall!
+                                                        .copyWith(
+                                                            color: Colors.white,
+                                                            fontSize: 10),
+                                                  ).translate(),
+                                                )
+                                              : InkWell(
+                                                  onTap: () async {
+                                                    global.showOnlyLoaderDialog(
+                                                        context);
+                                                    await followAstrologerController
+                                                        .addFollowers(
+                                                            astrologerId2!);
+                                                    global.hideLoader();
+                                                    if (followAstrologerController
+                                                        .isFollowed) {
+                                                      setState(() {
+                                                        isFollowLocal = true;
+                                                      });
+                                                    }
+                                                  },
+                                                  child: Container(
+                                                    padding:
+                                                        const EdgeInsets.all(8),
+                                                    margin:
+                                                        const EdgeInsets.only(
+                                                            right: 8),
+                                                    alignment: Alignment.center,
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.black38,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20)),
+                                                    child: Text(
+                                                      'Follow',
+                                                      style: Get
+                                                          .textTheme.bodySmall!
+                                                          .copyWith(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 10),
+                                                    ).translate(),
+                                                  ),
+                                                ),
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10, vertical: 4),
+                                            margin:
+                                                const EdgeInsets.only(right: 8),
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                                color: Colors.black38,
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Text(
+                                              '$viewer',
+                                              style: Get.textTheme.bodySmall!
+                                                  .copyWith(
+                                                      color: Colors.white,
+                                                      fontSize: 10),
                                             ),
-                                      Container(
-                                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                                        margin: const EdgeInsets.only(right: 8),
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(color: Colors.black38, borderRadius: BorderRadius.circular(20)),
-                                        child: Text(
-                                          '$viewer',
-                                          style: Get.textTheme.bodySmall!.copyWith(color: Colors.white, fontSize: 10),
-                                        ),
-                                      ),
+                                          ),
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
-                              ),
-                            ]),
+                                  ),
+                                ]),
                           )
                         ]),
                       ],
@@ -2370,10 +3214,13 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
 
     //create an instance of the Agora engine
     agoraEngine = createAgoraRtcEngine();
-    await agoraEngine.initialize(RtcEngineContext(appId: global.getSystemFlagValue(global.systemFlagNameList.agoraAppId)));
+    await agoraEngine.initialize(RtcEngineContext(
+        appId:
+            global.getSystemFlagValue(global.systemFlagNameList.agoraAppId)));
 
     await agoraEngine.enableVideo();
-    await agoraEngine.setChannelProfile(ChannelProfileType.channelProfileLiveBroadcasting);
+    await agoraEngine
+        .setChannelProfile(ChannelProfileType.channelProfileLiveBroadcasting);
     // Register the event handler
     agoraEngine.registerEventHandler(
       RtcEngineEventHandler(
@@ -2408,14 +3255,16 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                 remoteIdOfConnectedCustomer = remoteUId;
                 isImHost = true;
               });
-              print('cohost is joined : ' + remoteIdOfConnectedCustomer.toString());
+              print('cohost is joined : ' +
+                  remoteIdOfConnectedCustomer.toString());
             }
 
             print('remote call');
           },
           onUserMuteVideo: (RtcConnection conn, int remoteId3, bool muted) {
             print("Muted remoteId:" + remoteId3.toString());
-            print("remoteIdOfConnectedCustomer:" + remoteIdOfConnectedCustomer.toString());
+            print("remoteIdOfConnectedCustomer:" +
+                remoteIdOfConnectedCustomer.toString());
             print("match for remoteId3 : ");
             print("Muted or not: " + muted.toString());
             if (muted) {
@@ -2436,7 +3285,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
               }
             }
           },
-          onUserOffline: (RtcConnection connection, int remoteUId, UserOfflineReasonType reason) async {
+          onUserOffline: (RtcConnection connection, int remoteUId,
+              UserOfflineReasonType reason) async {
             if (remoteUid == remoteUId) {
               await liveController.deleteLiveAstrologer(astrologerId2!);
               setState(() {
@@ -2446,7 +3296,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
               print('host left');
               leave();
               if (!widget.isFromHome) {
-                print('Leave proccess start after leave method from else part !widget.isFromHome');
+                print(
+                    'Leave proccess start after leave method from else part !widget.isFromHome');
                 bottomNavigationController.setBottomIndex(0, 0);
               } else {
                 print('Leave proccess start after leave method from else part');
@@ -2462,11 +3313,14 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
               print("Reason for offline:" + reason.name);
             }
           },
-          onStreamMessage: (connection, remoteUid, streamId, data, length, sentTs) {},
-          onRemoteVideoStateChanged: (RtcConnection con, int remoteId, RemoteVideoState st, RemoteVideoStateReason reason, int ok) {
+          onStreamMessage:
+              (connection, remoteUid, streamId, data, length, sentTs) {},
+          onRemoteVideoStateChanged: (RtcConnection con, int remoteId,
+              RemoteVideoState st, RemoteVideoStateReason reason, int ok) {
             print(remoteId);
           },
-          onClientRoleChanged: (RtcConnection constate, ClientRoleType oldRoleType, ClientRoleType newRoleType, option) {
+          onClientRoleChanged: (RtcConnection constate,
+              ClientRoleType oldRoleType, ClientRoleType newRoleType, option) {
             print("onClientRoleChanged");
 
             if (isHostJoinAsAudio == false) {
@@ -2477,8 +3331,12 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
           }),
     );
 
-    currentUserName = splashController.currentUser!.name! != "" ? splashController.currentUser!.name ?? "" : "User";
-    currentUserProfile = splashController.currentUser!.profile! != "" ? "${global.imgBaseurl}${splashController.currentUser!.profile}" : "";
+    currentUserName = splashController.currentUser!.name! != ""
+        ? splashController.currentUser!.name ?? ""
+        : "User";
+    currentUserProfile = splashController.currentUser!.profile! != ""
+        ? "${global.imgBaseurl}${splashController.currentUser!.profile}"
+        : "";
 
     join();
     ConnectionStateType callId = await agoraEngine.getConnectionState();
@@ -2569,12 +3427,22 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
     if (widget.isForLiveCallAcceptDecline == true) {
       Get.back();
       print("Get back from leave()");
-      int index5 = liveController.waitList.indexWhere((element) => element.userId == global.currentUserId);
+      int index5 = liveController.waitList
+          .indexWhere((element) => element.userId == global.currentUserId);
       if (index5 != -1) {
-        await liveController.deleteFromWaitList(liveController.waitList[index5].id);
+        await liveController
+            .deleteFromWaitList(liveController.waitList[index5].id);
       }
       if (global.user.walletAmount! > 0) {
-        await liveController.cutPaymentForLive(global.user.id!, liveController.totalCompletedTime, astrologerId2!, widget.requesType!, "", sId1: global.agoraSid1, sId2: global.agoraSid2, channelName: channel2);
+        await liveController.cutPaymentForLive(
+            global.user.id!,
+            liveController.totalCompletedTime,
+            astrologerId2!,
+            widget.requesType!,
+            "",
+            sId1: global.agoraSid1,
+            sId2: global.agoraSid2,
+            channelName: channel2);
         print("Going to call stopRecording");
         if (liveController.callId != null) {
           int? callId;
@@ -2602,13 +3470,23 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
             "chatId": "5_10",
           });
       //here we need to call methods to all other users for stop timer.
-      int index5 = liveController.waitList.indexWhere((element) => element.userId == global.currentUserId);
+      int index5 = liveController.waitList
+          .indexWhere((element) => element.userId == global.currentUserId);
       if (index5 != -1) {
-        await liveController.deleteFromWaitList(liveController.waitList[index5].id);
+        await liveController
+            .deleteFromWaitList(liveController.waitList[index5].id);
       }
       liveController.timer2!.cancel();
       if (global.user.walletAmount! > 0) {
-        await liveController.cutPaymentForLive(global.user.id!, liveController.totalCompletedTimeForChat, astrologerId2!, "Chat", liveController.chatId!, sId1: global.agoraSid1, sId2: global.agoraSid2, channelName: channel2);
+        await liveController.cutPaymentForLive(
+            global.user.id!,
+            liveController.totalCompletedTimeForChat,
+            astrologerId2!,
+            "Chat",
+            liveController.chatId!,
+            sId1: global.agoraSid1,
+            sId2: global.agoraSid2,
+            channelName: channel2);
       }
       print('chat caiiId ${liveController.callId}');
       if (liveController.callId != null) {
@@ -2649,7 +3527,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
 
   @override
   void dispose() async {
-    print("dispose called with isLeaveCalled" + liveController.isLeaveCalled.toString());
+    print("dispose called with isLeaveCalled" +
+        liveController.isLeaveCalled.toString());
 
     // ignore: unnecessary_null_comparison
     if (agoraEngine != null) {
@@ -2663,12 +3542,22 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
       log('customer left on dispose');
 
       if (widget.isForLiveCallAcceptDecline == true) {
-        int index5 = liveController.waitList.indexWhere((element) => element.userId == global.currentUserId);
+        int index5 = liveController.waitList
+            .indexWhere((element) => element.userId == global.currentUserId);
         if (index5 != -1) {
-          await liveController.deleteFromWaitList(liveController.waitList[index5].id);
+          await liveController
+              .deleteFromWaitList(liveController.waitList[index5].id);
         }
         if (global.user.walletAmount! > 0) {
-          await liveController.cutPaymentForLive(global.user.id!, liveController.totalCompletedTime, astrologerId2!, widget.requesType!, "", sId1: global.agoraSid1, sId2: global.agoraSid2, channelName: channel2);
+          await liveController.cutPaymentForLive(
+              global.user.id!,
+              liveController.totalCompletedTime,
+              astrologerId2!,
+              widget.requesType!,
+              "",
+              sId1: global.agoraSid1,
+              sId2: global.agoraSid2,
+              channelName: channel2);
           if (liveController.callId != null) {
             int? callId;
 
@@ -2690,13 +3579,23 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
               "sessionType": "end",
               "chatId": "5_10",
             });
-        int index5 = liveController.waitList.indexWhere((element) => element.userId == global.currentUserId);
+        int index5 = liveController.waitList
+            .indexWhere((element) => element.userId == global.currentUserId);
         if (index5 != -1) {
-          await liveController.deleteFromWaitList(liveController.waitList[index5].id);
+          await liveController
+              .deleteFromWaitList(liveController.waitList[index5].id);
         }
         liveController.timer2!.cancel();
         if (global.user.walletAmount! > 0) {
-          await liveController.cutPaymentForLive(global.user.id!, liveController.totalCompletedTimeForChat, astrologerId2!, "Chat", liveController.chatId!, sId1: global.agoraSid1, channelName: channel2, sId2: global.agoraSid2);
+          await liveController.cutPaymentForLive(
+              global.user.id!,
+              liveController.totalCompletedTimeForChat,
+              astrologerId2!,
+              "Chat",
+              liveController.chatId!,
+              sId1: global.agoraSid1,
+              channelName: channel2,
+              sId2: global.agoraSid2);
         }
         if (liveController.callId != null) {
           int? callId;
@@ -2729,12 +3628,21 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
   Future generateToken() async {
     try {
       int? id = global.sp!.getInt('currentUserId');
-      currentUserName = splashController.currentUser!.name! != "" ? splashController.currentUser!.name ?? "" : "User";
-      currentUserProfile = splashController.currentUser!.profile! != "" ? "${global.imgBaseurl}${splashController.currentUser!.profile}" : "";
+      currentUserName = splashController.currentUser!.name! != ""
+          ? splashController.currentUser!.name ?? ""
+          : "User";
+      currentUserProfile = splashController.currentUser!.profile! != ""
+          ? "${global.imgBaseurl}${splashController.currentUser!.profile}"
+          : "";
       chatuid = "AgoraLiveUser_$id&&$currentUserName";
       channelId = "liveAstrologer_$astrologerId2";
       global.showOnlyLoaderDialog(context);
-      await liveController.getRtmToken(global.getSystemFlagValue(global.systemFlagNameList.agoraAppId), global.getSystemFlagValue(global.systemFlagNameList.agoraAppCertificate), chatuid, channelId);
+      await liveController.getRtmToken(
+          global.getSystemFlagValue(global.systemFlagNameList.agoraAppId),
+          global.getSystemFlagValue(
+              global.systemFlagNameList.agoraAppCertificate),
+          chatuid,
+          channelId);
       global.hideLoader();
 
       log("chat token:-${global.agoraChatToken}");
@@ -2745,7 +3653,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
   }
 
   Future<void> createClient() async {
-    client = await AgoraRtmClient.createInstance(global.getSystemFlagValue(global.systemFlagNameList.agoraAppId));
+    client = await AgoraRtmClient.createInstance(
+        global.getSystemFlagValue(global.systemFlagNameList.agoraAppId));
     client.onMessageReceived = (AgoraRtmMessage message, String peerId) {
       log('message sent ...... ${message.text}');
       setState(() {
@@ -2822,21 +3731,32 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
           if (liveController.liveUsers.isNotEmpty) {
             for (var i = 0; i < liveController.liveUsers.length; i++) {
               if (liveController.liveUsers[i].fcmToken != null) {
-                otherJoinUsersFcmTokens.add(liveController.liveUsers[i].fcmToken!);
+                otherJoinUsersFcmTokens
+                    .add(liveController.liveUsers[i].fcmToken!);
               }
             }
           }
-          String myToken = liveController.liveUsers.where((element) => element.userId == global.user.id).first.fcmToken!;
+          String myToken = liveController.liveUsers
+              .where((element) => element.userId == global.user.id)
+              .first
+              .fcmToken!;
           otherJoinUsersFcmTokens.removeWhere((element) => element == myToken);
-          String time = liveController.waitList.where((element) => element.userId == global.user.id).first.time;
+          String time = liveController.waitList
+              .where((element) => element.userId == global.user.id)
+              .first
+              .time;
           int timeIn = int.parse(time.toString());
           timeIn = timeIn - liveController.totalCompletedTime;
           print("otherJoinUsersFcmTokens" + otherJoinUsersFcmTokens.toString());
-          await global.callOnFcmApiSendPushNotifications(fcmTokem: otherJoinUsersFcmTokens, title: "For accepting time while user already splitted", subTitle: "For accepting time while user already splitted", sendData: {
-            "timeInInt": timeIn,
-            "joinUserName": global.user.name,
-            "joinUserProfile": global.user.profile,
-          });
+          await global.callOnFcmApiSendPushNotifications(
+              fcmTokem: otherJoinUsersFcmTokens,
+              title: "For accepting time while user already splitted",
+              subTitle: "For accepting time while user already splitted",
+              sendData: {
+                "timeInInt": timeIn,
+                "joinUserName": global.user.name,
+                "joinUserProfile": global.user.profile,
+              });
         });
       }
     };
@@ -2871,7 +3791,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
 
   void sendChannelMessage(String channelMessage, String? gift) async {
     try {
-      await channel.sendMessage(AgoraRtmMessage.fromText('$currentUserName&&$channelMessage&&$currentUserProfile&&$gift'));
+      await channel.sendMessage(AgoraRtmMessage.fromText(
+          '$currentUserName&&$channelMessage&&$currentUserProfile&&$gift'));
       log('channelId -------->$channelId');
       setState(() {
         messageList.add(MessageModel(
@@ -2895,7 +3816,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
     }
   }
 
-  Widget callWidget(IconData icon, String title, String description, Function onJoin) {
+  Widget callWidget(
+      IconData icon, String title, String description, Function onJoin) {
     return SizedBox(
       width: Get.width,
       child: Row(
@@ -2918,7 +3840,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                   SizedBox(
                     child: Text(
                       description,
-                      style: Get.textTheme.bodySmall!.copyWith(color: Colors.grey),
+                      style:
+                          Get.textTheme.bodySmall!.copyWith(color: Colors.grey),
                     ).translate(),
                   ),
                 ],
@@ -2934,7 +3857,9 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)), color: Get.theme.primaryColor),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Get.theme.primaryColor),
                   child: Text(
                     "join",
                     style: Get.textTheme.bodyText1!.copyWith(fontSize: 10),
@@ -2951,23 +3876,27 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
 
   Future startRecord() async {
     CallController callController = Get.find<CallController>();
-    await callController.agoraStartRecording(widget.channel, global.localLiveUid!, widget.token);
+    await callController.agoraStartRecording(
+        widget.channel, global.localLiveUid!, widget.token);
   }
 
   Future startRecord2() async {
     CallController callController = Get.find<CallController>();
-    await callController.agoraStartRecording2(widget.channel, global.localLiveUid2!, widget.token);
+    await callController.agoraStartRecording2(
+        widget.channel, global.localLiveUid2!, widget.token);
   }
 
   Future stopRecord(int callId) async {
     CallController callController = Get.find<CallController>();
     print('stop1 audio recording in live astrologer');
-    await callController.agoraStopRecording(callId, widget.channel, global.localLiveUid!);
+    await callController.agoraStopRecording(
+        callId, widget.channel, global.localLiveUid!);
   }
 
   Future stopRecord2(int callId) async {
     CallController callController = Get.find<CallController>();
     print('stop2 audio recording in live astrologer');
-    await callController.agoraStopRecording2(callId, widget.channel, global.localLiveUid2!);
+    await callController.agoraStopRecording2(
+        callId, widget.channel, global.localLiveUid2!);
   }
 }
