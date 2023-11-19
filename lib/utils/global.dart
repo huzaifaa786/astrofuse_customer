@@ -59,9 +59,9 @@ final DateFormat formatter = DateFormat("dd MMM yy, hh:mm a");
 String stripeBaseApi = 'https://api.stripe.com/v1';
 
 // String baseUrl = "https://astro.codefuse.org/api";
-String baseUrl = "https://astro.logy.lecenthealthcare.com/api";
+String baseUrl = "https://astro.ezmoveportal.com/api";
 // String imgBaseurl = "https://astro.codefuse.org/";
-String imgBaseurl = "https://astro.logy.lecenthealthcare.com/";
+String imgBaseurl = "https://astro.ezmoveportal.com/";
 String webBaseUrl = "https://astro.codefuse.org/";
 String appMode = "LIVE";
 Map<String, dynamic> appParameters = {

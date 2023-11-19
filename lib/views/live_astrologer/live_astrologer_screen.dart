@@ -874,11 +874,15 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
       print("liveController.totalCompletedTime: " +
           liveController.totalCompletedTime.toString());
       liveController.update();
+
       timer = Timer.periodic(Duration(seconds: 1), (timer) {
         liveController.totalCompletedTime =
             liveController.totalCompletedTime + 1;
-        print("updated totalCompletedTime :  " +
-            liveController.totalCompletedTime.toString());
+
+      print("***********updated totalCompletedTime :  " +
+                  liveController.totalCompletedTime.toString());
+            liveController.update();
+       
       });
 
       timer2 = Timer.periodic(Duration(seconds: 5), (timer) async {
@@ -3433,7 +3437,8 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
         await liveController
             .deleteFromWaitList(liveController.waitList[index5].id);
       }
-      if (global.user.walletAmount! > 0) {
+      // if (global.user.walletAmount! > 0) {
+        print('********before api calling of leave call  : ' +  liveController.totalCompletedTime.toString());
         await liveController.cutPaymentForLive(
             global.user.id!,
             liveController.totalCompletedTime,
@@ -3455,7 +3460,7 @@ class _LiveAstrologerScreenState extends State<LiveAstrologerScreen> {
           await stopRecord2(callId);
         }
         print("After call recording started");
-      }
+      // }
       timer!.cancel();
       timer2!.cancel();
     }
