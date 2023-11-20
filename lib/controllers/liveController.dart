@@ -447,18 +447,24 @@ class LiveController extends GetxController {
   }
 
   Future<dynamic> addToWaitList(
-      String channel, String requestType, int astrologerId) async {
+      String channel, String requestType, int astrologerId, charges) async {
     try {
       await global.checkBody().then((result) async {
         if (result) {
           global.showOnlyLoaderDialog(Get.context);
           print(global.user.name);
+          var minutes = global.user.walletAmount! / charges;
+          var seconds = minutes * 300;
+          String fixedSeconds = seconds.toStringAsFixed(0);
+          print("seconds*******************************");
+          print(seconds);
+
           String? fcmToken = await FirebaseMessaging.instance.getToken();
           await apiHelper
               .addToWaitlist(
                   channel: channel,
                   requestType: requestType,
-                  time: "1000",
+                  time: fixedSeconds,
                   userId: global.currentUserId,
                   userName: "${global.user.name}",
                   userProfile: "${global.user.profile}",

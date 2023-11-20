@@ -628,46 +628,42 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
-  - agora_rtc_engine (6.2.2):
-    - AgoraIrisRTC_iOS (= 4.2.2-build.1)
-    - AgoraRtcEngine_iOS (= 4.2.2)
-    - Flutter
-  - agora_rtm (1.5.8):
-    - AgoraRtm_iOS (= 1.5.1)
-    - Flutter
-  - AgoraIrisRTC_iOS (4.2.2-build.1)
-  - AgoraRtcEngine_iOS (4.2.2):
-    - AgoraRtcEngine_iOS/AIAEC (= 4.2.2)
-    - AgoraRtcEngine_iOS/AINS (= 4.2.2)
-    - AgoraRtcEngine_iOS/AudioBeauty (= 4.2.2)
-    - AgoraRtcEngine_iOS/ClearVision (= 4.2.2)
-    - AgoraRtcEngine_iOS/ContentInspect (= 4.2.2)
-    - AgoraRtcEngine_iOS/DRM (= 4.2.2)
-    - AgoraRtcEngine_iOS/FaceDetection (= 4.2.2)
-    - AgoraRtcEngine_iOS/ReplayKit (= 4.2.2)
-    - AgoraRtcEngine_iOS/RtcBasic (= 4.2.2)
-    - AgoraRtcEngine_iOS/SpatialAudio (= 4.2.2)
-    - AgoraRtcEngine_iOS/VideoCodecDec (= 4.2.2)
-    - AgoraRtcEngine_iOS/VideoCodecEnc (= 4.2.2)
-    - AgoraRtcEngine_iOS/VirtualBackground (= 4.2.2)
-    - AgoraRtcEngine_iOS/VQA (= 4.2.2)
-  - AgoraRtcEngine_iOS/AIAEC (4.2.2)
-  - AgoraRtcEngine_iOS/AINS (4.2.2)
-  - AgoraRtcEngine_iOS/AudioBeauty (4.2.2)
-  - AgoraRtcEngine_iOS/ClearVision (4.2.2)
-  - AgoraRtcEngine_iOS/ContentInspect (4.2.2)
-  - AgoraRtcEngine_iOS/DRM (4.2.2)
-  - AgoraRtcEngine_iOS/FaceDetection (4.2.2)
-  - AgoraRtcEngine_iOS/ReplayKit (4.2.2)
-  - AgoraRtcEngine_iOS/RtcBasic (4.2.2)
-  - AgoraRtcEngine_iOS/SpatialAudio (4.2.2)
-  - AgoraRtcEngine_iOS/VideoCodecDec (4.2.2)
-  - AgoraRtcEngine_iOS/VideoCodecEnc (4.2.2)
-  - AgoraRtcEngine_iOS/VirtualBackground (4.2.2)
-  - AgoraRtcEngine_iOS/VQA (4.2.2)
-  - AgoraRtm_iOS (1.5.1)
+  - agora_rtc_engine (0.0.1):
+    - AgoraIrisRTC_macOS (= 4.2.2-build.1)
+    - AgoraRtcEngine_macOS (= 4.2.2)
+    - FlutterMacOS
+  - AgoraIrisRTC_macOS (4.2.2-build.1)
+  - AgoraRtcEngine_macOS (4.2.2):
+    - AgoraRtcEngine_macOS/AIAEC (= 4.2.2)
+    - AgoraRtcEngine_macOS/AINS (= 4.2.2)
+    - AgoraRtcEngine_macOS/AudioBeauty (= 4.2.2)
+    - AgoraRtcEngine_macOS/ClearVision (= 4.2.2)
+    - AgoraRtcEngine_macOS/ContentInspect (= 4.2.2)
+    - AgoraRtcEngine_macOS/DRM (= 4.2.2)
+    - AgoraRtcEngine_macOS/FaceDetection (= 4.2.2)
+    - AgoraRtcEngine_macOS/RtcBasic (= 4.2.2)
+    - AgoraRtcEngine_macOS/ScreenCapture (= 4.2.2)
+    - AgoraRtcEngine_macOS/SpatialAudio (= 4.2.2)
+    - AgoraRtcEngine_macOS/VideoCodecDec (= 4.2.2)
+    - AgoraRtcEngine_macOS/VideoCodecEnc (= 4.2.2)
+    - AgoraRtcEngine_macOS/VirtualBackground (= 4.2.2)
+    - AgoraRtcEngine_macOS/VQA (= 4.2.2)
+  - AgoraRtcEngine_macOS/AIAEC (4.2.2)
+  - AgoraRtcEngine_macOS/AINS (4.2.2)
+  - AgoraRtcEngine_macOS/AudioBeauty (4.2.2)
+  - AgoraRtcEngine_macOS/ClearVision (4.2.2)
+  - AgoraRtcEngine_macOS/ContentInspect (4.2.2)
+  - AgoraRtcEngine_macOS/DRM (4.2.2)
+  - AgoraRtcEngine_macOS/FaceDetection (4.2.2)
+  - AgoraRtcEngine_macOS/RtcBasic (4.2.2)
+  - AgoraRtcEngine_macOS/ScreenCapture (4.2.2)
+  - AgoraRtcEngine_macOS/SpatialAudio (4.2.2)
+  - AgoraRtcEngine_macOS/VideoCodecDec (4.2.2)
+  - AgoraRtcEngine_macOS/VideoCodecEnc (4.2.2)
+  - AgoraRtcEngine_macOS/VirtualBackground (4.2.2)
+  - AgoraRtcEngine_macOS/VQA (4.2.2)
   - audioplayers_darwin (0.0.1):
-    - Flutter
+    - FlutterMacOS
   - BoringSSL-GRPC (0.0.24):
     - BoringSSL-GRPC/Implementation (= 0.0.24)
     - BoringSSL-GRPC/Interface (= 0.0.24)
@@ -675,23 +671,23 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.24)
   - BoringSSL-GRPC/Interface (0.0.24)
   - cloud_firestore (4.8.5):
-    - Firebase/Firestore (= 10.12.0)
+    - Firebase/CoreOnly (~> 10.12.0)
+    - Firebase/Firestore (~> 10.12.0)
     - firebase_core
-    - Flutter
+    - FlutterMacOS
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - connectivity_plus (0.0.1):
-    - Flutter
+  - connectivity_plus_macos (0.0.1):
+    - FlutterMacOS
     - ReachabilitySwift
   - device_info_plus (0.0.1):
-    - Flutter
+    - FlutterMacOS
+  - file_selector_macos (0.0.1):
+    - FlutterMacOS
   - Firebase/Auth (10.12.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 10.12.0)
   - Firebase/CoreOnly (10.12.0):
     - FirebaseCore (= 10.12.0)
-  - Firebase/DynamicLinks (10.12.0):
-    - Firebase/CoreOnly
-    - FirebaseDynamicLinks (~> 10.12.0)
   - Firebase/Firestore (10.12.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 10.12.0)
@@ -699,20 +695,18 @@ PODS:
     - Firebase/CoreOnly
     - FirebaseMessaging (~> 10.12.0)
   - firebase_auth (4.7.3):
-    - Firebase/Auth (= 10.12.0)
+    - Firebase/Auth (~> 10.12.0)
+    - Firebase/CoreOnly (~> 10.12.0)
     - firebase_core
-    - Flutter
+    - FlutterMacOS
   - firebase_core (2.15.1):
-    - Firebase/CoreOnly (= 10.12.0)
-    - Flutter
-  - firebase_dynamic_links (5.3.5):
-    - Firebase/DynamicLinks (= 10.12.0)
-    - firebase_core
-    - Flutter
+    - Firebase/CoreOnly (~> 10.12.0)
+    - FlutterMacOS
   - firebase_messaging (14.6.6):
-    - Firebase/Messaging (= 10.12.0)
+    - Firebase/CoreOnly (~> 10.12.0)
+    - Firebase/Messaging (~> 10.12.0)
     - firebase_core
-    - Flutter
+    - FlutterMacOS
   - FirebaseAppCheckInterop (10.18.0)
   - FirebaseAuth (10.12.0):
     - FirebaseAppCheckInterop (~> 10.0)
@@ -726,8 +720,6 @@ PODS:
     - GoogleUtilities/Logger (~> 7.8)
   - FirebaseCoreInternal (10.18.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseDynamicLinks (10.12.0):
-    - FirebaseCore (~> 10.0)
   - FirebaseFirestore (10.12.0):
     - abseil/algorithm (~> 1.20220623.0)
     - abseil/base (~> 1.20220623.0)
@@ -755,28 +747,12 @@ PODS:
     - GoogleUtilities/Reachability (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
-  - Flutter (1.0.0)
-  - flutter_inappwebview (0.0.1):
-    - Flutter
-    - flutter_inappwebview/Core (= 0.0.1)
-    - OrderedSet (~> 5.0)
-  - flutter_inappwebview/Core (0.0.1):
-    - Flutter
-    - OrderedSet (~> 5.0)
   - flutter_local_notifications (0.0.1):
-    - Flutter
-  - flutter_share (0.0.1):
-    - Flutter
-  - fluttertoast (0.0.2):
-    - Flutter
-    - Toast
+    - FlutterMacOS
+  - FlutterMacOS (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - gallery_saver (0.0.1):
-    - Flutter
-  - geocoding_ios (1.0.5):
-    - Flutter
   - GoogleDataTransport (9.2.5):
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
@@ -860,98 +836,63 @@ PODS:
     - gRPC-Core/Interface (= 1.50.1)
   - gRPC-Core/Interface (1.50.1)
   - GTMSessionFetcher/Core (3.1.1)
-  - image_cropper (0.0.4):
-    - Flutter
-    - TOCropViewController (~> 2.6.1)
-  - image_picker_ios (0.0.1):
-    - Flutter
   - iris_method_channel (0.0.1):
-    - Flutter
+    - FlutterMacOS
   - leveldb-library (1.22.2)
   - nanopb (2.30909.1):
     - nanopb/decode (= 2.30909.1)
     - nanopb/encode (= 2.30909.1)
   - nanopb/decode (2.30909.1)
   - nanopb/encode (2.30909.1)
-  - OrderedSet (5.0.0)
-  - package_info_plus (0.4.5):
-    - Flutter
+  - package_info_plus_macos (0.0.1):
+    - FlutterMacOS
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - permission_handler_apple (9.1.1):
-    - Flutter
   - PromisesObjC (2.3.1)
-  - razorpay-pod (1.3.4)
-  - razorpay_flutter (1.1.10):
-    - Flutter
-    - razorpay-pod
   - ReachabilitySwift (5.0.0)
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - sqflite (0.0.3):
-    - Flutter
+  - sqflite (0.0.2):
+    - FlutterMacOS
     - FMDB (>= 2.7.5)
-  - store_redirect (0.0.1):
-    - Flutter
-  - syncfusion_flutter_pdfviewer (0.0.1):
-    - Flutter
-  - Toast (4.0.0)
-  - TOCropViewController (2.6.1)
-  - url_launcher_ios (0.0.1):
-    - Flutter
-  - video_player_avfoundation (0.0.1):
-    - Flutter
-  - webview_flutter_wkwebview (0.0.1):
-    - Flutter
+  - syncfusion_pdfviewer_macos (0.0.1):
+    - FlutterMacOS
+  - url_launcher_macos (0.0.1):
+    - FlutterMacOS
 
 DEPENDENCIES:
-  - agora_rtc_engine (from `.symlinks/plugins/agora_rtc_engine/ios`)
-  - agora_rtm (from `.symlinks/plugins/agora_rtm/ios`)
-  - audioplayers_darwin (from `.symlinks/plugins/audioplayers_darwin/ios`)
-  - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
-  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
-  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
-  - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
-  - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
-  - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
-  - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
-  - Flutter (from `Flutter`)
-  - flutter_inappwebview (from `.symlinks/plugins/flutter_inappwebview/ios`)
-  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
-  - flutter_share (from `.symlinks/plugins/flutter_share/ios`)
-  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
-  - gallery_saver (from `.symlinks/plugins/gallery_saver/ios`)
-  - geocoding_ios (from `.symlinks/plugins/geocoding_ios/ios`)
-  - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
-  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
-  - iris_method_channel (from `.symlinks/plugins/iris_method_channel/ios`)
-  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
-  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
-  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
-  - razorpay_flutter (from `.symlinks/plugins/razorpay_flutter/ios`)
-  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/ios`)
-  - sqflite (from `.symlinks/plugins/sqflite/ios`)
-  - store_redirect (from `.symlinks/plugins/store_redirect/ios`)
-  - syncfusion_flutter_pdfviewer (from `.symlinks/plugins/syncfusion_flutter_pdfviewer/ios`)
-  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
-  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
-  - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
+  - agora_rtc_engine (from `Flutter/ephemeral/.symlinks/plugins/agora_rtc_engine/macos`)
+  - audioplayers_darwin (from `Flutter/ephemeral/.symlinks/plugins/audioplayers_darwin/macos`)
+  - cloud_firestore (from `Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos`)
+  - connectivity_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos`)
+  - device_info_plus (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos`)
+  - file_selector_macos (from `Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos`)
+  - firebase_auth (from `Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos`)
+  - firebase_core (from `Flutter/ephemeral/.symlinks/plugins/firebase_core/macos`)
+  - firebase_messaging (from `Flutter/ephemeral/.symlinks/plugins/firebase_messaging/macos`)
+  - flutter_local_notifications (from `Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos`)
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - iris_method_channel (from `Flutter/ephemeral/.symlinks/plugins/iris_method_channel/macos`)
+  - package_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos`)
+  - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos`)
+  - shared_preferences_foundation (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/macos`)
+  - sqflite (from `Flutter/ephemeral/.symlinks/plugins/sqflite/macos`)
+  - syncfusion_pdfviewer_macos (from `Flutter/ephemeral/.symlinks/plugins/syncfusion_pdfviewer_macos/macos`)
+  - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
 
 SPEC REPOS:
   trunk:
     - abseil
-    - AgoraIrisRTC_iOS
-    - AgoraRtcEngine_iOS
-    - AgoraRtm_iOS
+    - AgoraIrisRTC_macOS
+    - AgoraRtcEngine_macOS
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAppCheckInterop
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreInternal
-    - FirebaseDynamicLinks
     - FirebaseFirestore
     - FirebaseInstallations
     - FirebaseMessaging
@@ -963,138 +904,89 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
-    - OrderedSet
     - PromisesObjC
-    - razorpay-pod
     - ReachabilitySwift
-    - Toast
-    - TOCropViewController
 
 EXTERNAL SOURCES:
   agora_rtc_engine:
-    :path: ".symlinks/plugins/agora_rtc_engine/ios"
-  agora_rtm:
-    :path: ".symlinks/plugins/agora_rtm/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/agora_rtc_engine/macos
   audioplayers_darwin:
-    :path: ".symlinks/plugins/audioplayers_darwin/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/audioplayers_darwin/macos
   cloud_firestore:
-    :path: ".symlinks/plugins/cloud_firestore/ios"
-  connectivity_plus:
-    :path: ".symlinks/plugins/connectivity_plus/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/cloud_firestore/macos
+  connectivity_plus_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos
   device_info_plus:
-    :path: ".symlinks/plugins/device_info_plus/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus/macos
+  file_selector_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/file_selector_macos/macos
   firebase_auth:
-    :path: ".symlinks/plugins/firebase_auth/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_auth/macos
   firebase_core:
-    :path: ".symlinks/plugins/firebase_core/ios"
-  firebase_dynamic_links:
-    :path: ".symlinks/plugins/firebase_dynamic_links/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_core/macos
   firebase_messaging:
-    :path: ".symlinks/plugins/firebase_messaging/ios"
-  Flutter:
-    :path: Flutter
-  flutter_inappwebview:
-    :path: ".symlinks/plugins/flutter_inappwebview/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/firebase_messaging/macos
   flutter_local_notifications:
-    :path: ".symlinks/plugins/flutter_local_notifications/ios"
-  flutter_share:
-    :path: ".symlinks/plugins/flutter_share/ios"
-  fluttertoast:
-    :path: ".symlinks/plugins/fluttertoast/ios"
-  gallery_saver:
-    :path: ".symlinks/plugins/gallery_saver/ios"
-  geocoding_ios:
-    :path: ".symlinks/plugins/geocoding_ios/ios"
-  image_cropper:
-    :path: ".symlinks/plugins/image_cropper/ios"
-  image_picker_ios:
-    :path: ".symlinks/plugins/image_picker_ios/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos
+  FlutterMacOS:
+    :path: Flutter/ephemeral
   iris_method_channel:
-    :path: ".symlinks/plugins/iris_method_channel/ios"
-  package_info_plus:
-    :path: ".symlinks/plugins/package_info_plus/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/iris_method_channel/macos
+  package_info_plus_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos
   path_provider_foundation:
-    :path: ".symlinks/plugins/path_provider_foundation/ios"
-  permission_handler_apple:
-    :path: ".symlinks/plugins/permission_handler_apple/ios"
-  razorpay_flutter:
-    :path: ".symlinks/plugins/razorpay_flutter/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos
   shared_preferences_foundation:
-    :path: ".symlinks/plugins/shared_preferences_foundation/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_foundation/macos
   sqflite:
-    :path: ".symlinks/plugins/sqflite/ios"
-  store_redirect:
-    :path: ".symlinks/plugins/store_redirect/ios"
-  syncfusion_flutter_pdfviewer:
-    :path: ".symlinks/plugins/syncfusion_flutter_pdfviewer/ios"
-  url_launcher_ios:
-    :path: ".symlinks/plugins/url_launcher_ios/ios"
-  video_player_avfoundation:
-    :path: ".symlinks/plugins/video_player_avfoundation/ios"
-  webview_flutter_wkwebview:
-    :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
+    :path: Flutter/ephemeral/.symlinks/plugins/sqflite/macos
+  syncfusion_pdfviewer_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/syncfusion_pdfviewer_macos/macos
+  url_launcher_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos
 
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
-  agora_rtc_engine: 667a7de14f35858a31b0c64cd54042a2158ef198
-  agora_rtm: 49a7d867ad91dfe587a3da4636273b80df0fe00d
-  AgoraIrisRTC_iOS: 7e71322c06db6c29ceaf89a964fb8b2700a75001
-  AgoraRtcEngine_iOS: c510de329cd905daff3f01fa4c872ea6d5eaee23
-  AgoraRtm_iOS: 595a9fa33a409831e6183396ea8f8bc563918403
-  audioplayers_darwin: 877d9a4d06331c5c374595e46e16453ac7eafa40
+  agora_rtc_engine: 66c57685283ebadc4b70d49b234fd0443f837589
+  AgoraIrisRTC_macOS: c4cb1fea791a76ce172801c8b006aa69eb036b07
+  AgoraRtcEngine_macOS: 5e4d1430490bf36597e47cdbe6e5284b24e66504
+  audioplayers_darwin: dcad41de4fbd0099cb3749f7ab3b0cb8f70b810c
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
-  cloud_firestore: c556fefce96568e422e453bf9aeda683dd435367
-  connectivity_plus: 413a8857dd5d9f1c399a39130850d02fe0feaf7e
-  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  cloud_firestore: e66bb529a756b7161469af13140e3b3f8f70b8c3
+  connectivity_plus_macos: f6e86fd000e971d361e54b5afcadc8c8fa773308
+  device_info_plus: 5401765fde0b8d062a2f8eb65510fb17e77cf07f
+  file_selector_macos: 468fb6b81fac7c0e88d71317f3eec34c3b008ff9
   Firebase: 07150e75d142fb9399f6777fa56a187b17f833a0
-  firebase_auth: 95f4a6acafa6a7a0d902aa467dd4d7ca336ee4be
-  firebase_core: 4a3246a02f828a01c74a2c26427037786d90f17f
-  firebase_dynamic_links: cc3fd36190c7b58c27353915271d2c0d031ee11b
-  firebase_messaging: 13b378c8449cae7ec96c79570170943dd73d4738
+  firebase_auth: 9569815ddc2e6c14da99145e826f27fbc1ebbc16
+  firebase_core: 559d892df9267acc6b7254d46fb3041866777509
+  firebase_messaging: dc65843de522b9aa6cb7e5ad89e04ef52fedca48
   FirebaseAppCheckInterop: 3cd914842ba46f4304050874cd284de82f154ffd
   FirebaseAuth: a66c1e14ec58f41d154a4b41ce1a23ea00ad4805
   FirebaseCore: f86a1394906b97ac445ae49c92552a9425831bed
   FirebaseCoreInternal: 8eb002e564b533bdcf1ba011f33f2b5c10e2ed4a
-  FirebaseDynamicLinks: 1a387da899779e5ef34f4d6f8bdba882f90d0e67
   FirebaseFirestore: f94c9541515fa4a49af52269bbc50349009424b4
   FirebaseInstallations: e842042ec6ac1fd2e37d7706363ebe7f662afea4
   FirebaseMessaging: bb2c4f6422a753038fe137d90ae7c1af57251316
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
-  flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
-  flutter_share: 4be0208963c60b537e6255ed2ce1faae61cd9ac2
-  fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
+  flutter_local_notifications: 3805ca215b2fb7f397d78b66db91f6a747af52e4
+  FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
-  geocoding_ios: a389ea40f6f548de6e63006a2e31bf66ff80769a
   GoogleDataTransport: 54dee9d48d14580407f8f5fbf2f496e92437a2f2
   GoogleUtilities: 0759d1a57ebb953965c2dfe0ba4c82e95ccc2e34
   "gRPC-C++": 0968bace703459fd3e5dcb0b2bed4c573dbff046
   gRPC-Core: 17108291d84332196d3c8466b48f016fc17d816d
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
-  image_cropper: a3291c624a953049bc6a02e1f8c8ceb162a24b25
-  image_picker_ios: 4a8aadfbb6dc30ad5141a2ce3832af9214a705b5
-  iris_method_channel: 0617c689164d8154c020c50f63ca79f92b8a7b9d
+  iris_method_channel: fba932d668df5b2a085f19bcd0b1f23d667a83cd
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   nanopb: d4d75c12cd1316f4a64e3c6963f879ecd4b5e0d5
-  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
-  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
+  package_info_plus_macos: f010621b07802a241d96d01876d6705f15e77c1c
   path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
-  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
-  razorpay-pod: df3aa440969489d242c40ec606db9a0c7095743f
-  razorpay_flutter: 84b3bfd206ae9c9c2a9ba585524a1b3d8102b6c1
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
-  sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
-  store_redirect: 2977747cf81689a39bd62c248c2deacb7a0d131e
-  syncfusion_flutter_pdfviewer: bb9998884b864cfedf72628df3503bdf57e397c0
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
-  TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
-  url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
-  video_player_avfoundation: 81e49bb3d9fb63dccf9fa0f6d877dc3ddbeac126
-  webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
+  sqflite: a5789cceda41d54d23f31d6de539d65bb14100ea
+  syncfusion_pdfviewer_macos: e9194851581cad04b28b53913d0636d39a4ed4b2
+  url_launcher_macos: d2691c7dd33ed713bf3544850a623080ec693d95
 
-PODFILE CHECKSUM: 53dfdf84ac035efffdb6afa00902e21a43b83bb9
+PODFILE CHECKSUM: 353c8bcc5d5b0994e508d035b5431cfe18c1dea7
 
 COCOAPODS: 1.12.0
