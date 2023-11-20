@@ -589,7 +589,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  final String apiKey = "AIzaSyDwps2hHZbsri0yg4NPUYdQoj5BOsZmWK0";
+  final String apiKey = "AIzaSyBOr3bXgN2bj9eECzSudyj_rgIFjyXkdn8";
   ThemeController themeController = Get.put(ThemeController());
   SplashController splashController = Get.put(SplashController());
   @override
