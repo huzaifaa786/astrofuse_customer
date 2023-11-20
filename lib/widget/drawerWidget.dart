@@ -13,6 +13,7 @@ import 'package:AstroGuru/controllers/splashController.dart';
 import 'package:AstroGuru/controllers/themeController.dart';
 import 'package:AstroGuru/views/freeServicesScreen.dart';
 import 'package:AstroGuru/views/getReportScreen.dart';
+import 'package:AstroGuru/views/refundPolicy/refundPolicyScreen.dart';
 import 'package:AstroGuru/views/loginScreen.dart';
 import 'package:AstroGuru/views/myFollowingScreen.dart';
 import 'package:AstroGuru/views/profile/editUserProfileScreen.dart';
@@ -212,6 +213,13 @@ class DrawerWidget extends StatelessWidget {
                       Get.to(() => ColorPickerPage());
                     },
                     child: _drawerItem(icon: Icons.brightness_2, title: 'Theme'));
+              }),
+              GetBuilder<ThemeController>(builder: (themeController) {
+                return GestureDetector(
+                    onTap: () async {
+                      Get.to(() => RefundPolicyPage());
+                    },
+                    child: _drawerItem(icon: Icons.currency_exchange, title: 'Refund Policy'));
               }),
               GestureDetector(
                   onTap: () async {
