@@ -62,7 +62,7 @@ String stripeBaseApi = 'https://api.stripe.com/v1';
 String baseUrl = "https://astro.ezmoveportal.com/api";
 // String imgBaseurl = "https://astro.codefuse.org/";
 String imgBaseurl = "https://astro.ezmoveportal.com/";
-String webBaseUrl = "https://astro.codefuse.org/";
+String webBaseUrl = "https://astro.ezmoveportal.com/";
 String appMode = "LIVE";
 Map<String, dynamic> appParameters = {
   "LIVE": {

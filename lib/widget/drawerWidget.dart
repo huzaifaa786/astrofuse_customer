@@ -19,6 +19,7 @@ import 'package:AstroGuru/views/myFollowingScreen.dart';
 import 'package:AstroGuru/views/profile/editUserProfileScreen.dart';
 import 'package:AstroGuru/views/settings/colorPicker.dart';
 import 'package:AstroGuru/views/settings/settingsScreen.dart';
+import 'package:AstroGuru/views/settings/termsAndConditionScreen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -220,6 +221,14 @@ class DrawerWidget extends StatelessWidget {
                       Get.to(() => RefundPolicyPage());
                     },
                     child: _drawerItem(icon: Icons.currency_exchange, title: 'Refund Policy'));
+              }),
+              
+                GetBuilder<ThemeController>(builder: (themeController) {
+                return GestureDetector(
+                    onTap: () async {
+                      Get.to(() => TermAndConditionScreen());
+                    },
+                    child: _drawerItem(icon: Icons.usb_rounded, title: 'Terms and Condition'));
               }),
               GestureDetector(
                   onTap: () async {

@@ -78,24 +78,24 @@ class SettingListScreen extends StatelessWidget {
                   ),
                 );
               }),
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => TermAndConditionScreen());
-                },
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    elevation: 2,
-                    child: Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text(
-                        "Terms and Condition",
-                        style: TextStyle(color: Colors.green, fontWeight: FontWeight.w500, fontSize: 16),
-                      ).translate(),
-                    ),
-                  ),
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Get.to(() => TermAndConditionScreen());
+              //   },
+              //   child: SizedBox(
+              //     width: MediaQuery.of(context).size.width,
+              //     child: Card(
+              //       elevation: 2,
+              //       child: Padding(
+              //         padding: EdgeInsets.all(15.0),
+              //         child: Text(
+              //           "Terms and Condition",
+              //           style: TextStyle(color: Colors.green, fontWeight: FontWeight.w500, fontSize: 16),
+              //         ).translate(),
+              //       ),
+              //     ),
+              //   ),
+              // ),
               GestureDetector(
                 onTap: () {
                   Get.to(() => const PrivacyPolicyScreen());
