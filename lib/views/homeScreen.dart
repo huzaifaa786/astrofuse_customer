@@ -2014,7 +2014,7 @@ class HomeScreen extends StatelessWidget {
                                                   'View All',
                                                   style: Get.theme.primaryTextTheme.bodySmall!.copyWith(
                                                     fontWeight: FontWeight.w400,
-                                                    color: Colors.grey[500],
+                                                    color: Colors.grey[700],
                                                   ),
                                                 ).translate(),
                                               ),
@@ -2121,7 +2121,7 @@ class HomeScreen extends StatelessWidget {
                                                                   style: Get.theme.textTheme.subtitle1!.copyWith(
                                                                     fontSize: 13,
                                                                     fontWeight: FontWeight.w400,
-                                                                    color: Colors.grey[350],
+                                                                    color: Colors.grey[500],
                                                                     letterSpacing: 0,
                                                                   ),
                                                                 ),
@@ -2221,7 +2221,7 @@ class HomeScreen extends StatelessWidget {
                                         },
                                         child: Text(
                                           'Send Feedback',
-                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(color: Colors.black),
+                                          style: Get.theme.primaryTextTheme.bodySmall!.copyWith(color: Colors.white),
                                         ).translate(),
                                       ),
                                     ),
@@ -2379,6 +2379,7 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     Icon(
                                       FontAwesomeIcons.solidCommentDots,
+                                      color: Colors.white,
                                       size: 13,
                                     ),
                                     Padding(
@@ -2389,6 +2390,7 @@ class HomeScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w500,
                                           letterSpacing: -0.2,
                                           wordSpacing: 0,
+                                          color: Colors.white
                                         ),
                                       ).translate(),
                                     ),
@@ -2431,6 +2433,7 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     Icon(
                                       Icons.phone,
+                                      color: Colors.white,
                                       size: 18,
                                     ),
                                     Padding(
@@ -2441,6 +2444,7 @@ class HomeScreen extends StatelessWidget {
                                           fontWeight: FontWeight.w500,
                                           letterSpacing: -0.2,
                                           wordSpacing: 0,
+                                          color: Colors.white
                                         ),
                                       ).translate(),
                                     ),

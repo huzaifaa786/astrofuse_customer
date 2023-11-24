@@ -603,7 +603,7 @@ class _MyAppState extends State<MyApp> {
             enableLog: true,
             theme: nativeTheme(),
             initialBinding: NetworkBinding(),
-            title: 'Astrofuse',
+            title: 'Astrologically',
             initialRoute: "SplashScreen",
             supportedLocales: L10n.all,
             home: SplashScreen(),

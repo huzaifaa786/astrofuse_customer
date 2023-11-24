@@ -302,11 +302,11 @@ class AstrologerProfile extends BaseRoute {
                   String applink;
                   final DynamicLinkParameters parameters =
                       DynamicLinkParameters(
-                    uriPrefix: 'https://astroguruupdated.page.link',
+                    uriPrefix: 'https://astrologgically.page.link',
                     link: Uri.parse(
-                        "https://astroguruupdated.page.link/userProfile?screen=astroProfile"),
+                        "https://astrologgically.page.link/userProfile?screen=astroProfile"),
                     androidParameters: AndroidParameters(
-                      packageName: 'com.astro.app',
+                      packageName: 'com.astrologically.app',
                       minimumVersion: 1,
                     ),
                   );

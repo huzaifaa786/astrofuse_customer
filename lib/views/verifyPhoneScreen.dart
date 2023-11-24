@@ -98,7 +98,7 @@ class VerifyPhoneScreen extends StatelessWidget {
                     },
                     child: Text(
                       'SUBMIT',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     ).translate(),
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all(

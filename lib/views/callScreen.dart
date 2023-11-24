@@ -84,8 +84,9 @@ class _CallScreenState extends State<CallScreen> {
           onBackPressed: () {},
           scaffoldKey: GlobalKey<ScaffoldState>(),
           title: 'Call with Astrologer',
-          titleStyle: Get.theme.primaryTextTheme.subtitle2!
-              .copyWith(fontWeight: FontWeight.w300),
+          titleStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w300),
           bgColor: Get.theme.primaryColor,
           actions: [
             Flex(
@@ -97,13 +98,13 @@ class _CallScreenState extends State<CallScreen> {
                         padding: EdgeInsets.all(2),
                         margin: EdgeInsets.symmetric(vertical: 17),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
+                          border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(5),
                         ),
                         alignment: Alignment.center,
                         child: Text(
                           '${global.getSystemFlagValueForLogin(global.systemFlagNameList.currency)}${global.splashController.currentUser?.walletAmount.toString()}',
-                          style: Get.theme.primaryTextTheme.bodySmall,
+                          style: TextStyle(color: Colors.white,fontSize: 13),
                         ),
                       )
                     : SizedBox(),
@@ -120,7 +121,7 @@ class _CallScreenState extends State<CallScreen> {
                 child: Icon(
                   FontAwesomeIcons.magnifyingGlass,
                   size: 20,
-                  color: Get.theme.iconTheme.color,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -139,7 +140,7 @@ class _CallScreenState extends State<CallScreen> {
                     Icon(
                       FontAwesomeIcons.filter,
                       size: 20,
-                      color: Get.theme.iconTheme.color,
+                      color: Colors.white,
                     ),
                     bottomNavigationController.applyFilter
                         ? Positioned(

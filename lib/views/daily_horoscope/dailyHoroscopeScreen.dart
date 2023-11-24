@@ -40,13 +40,13 @@ class DailyHoroscopeScreen extends StatelessWidget {
             backgroundColor: Get.theme.appBarTheme.systemOverlayStyle!.statusBarColor,
             title: Text(
               'Daily Horoscope',
-              style: Get.theme.primaryTextTheme.headline6!.copyWith(fontSize: 18, fontWeight: FontWeight.normal),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
             ).translate(),
             leading: IconButton(
               onPressed: () => Get.back(),
               icon: Icon(
                 Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
-                color: Get.theme.iconTheme.color,
+                color: Colors.white,
               ),
             ),
             actions: [
@@ -58,7 +58,7 @@ class DailyHoroscopeScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(12.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black),
+                      border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Row(
@@ -70,7 +70,7 @@ class DailyHoroscopeScreen extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(4.0),
-                          child: Text('Share', style: Get.textTheme.subtitle1!.copyWith(fontSize: 12)).translate(),
+                          child: Text('Share', style: TextStyle(fontSize: 12)).translate(),
                         )
                       ],
                     ),

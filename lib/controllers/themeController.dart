@@ -25,9 +25,9 @@ class ThemeController extends GetxController implements GetxService {
       _pickColor = Color(colorVal!);
       pickColorInt = colorVal;
     } else {
-      _pickColor = Color(0xffffc107);
+      _pickColor = Colors.purple;
       _pickSecondaryColor = Color(0xff000000);
-      pickColorInt = 0xffffc107;
+      pickColorInt = 0xff9c27b0;
     }
 
     update();

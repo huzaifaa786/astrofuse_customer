@@ -45,14 +45,14 @@ class AvailabilityScreen extends StatelessWidget {
                           ),
                           Column(
                             children: [
-                              DotIndicator(color: Colors.black),
+                              DotIndicator(color: Colors.purple),
                               SizedBox(
                                 height: bottombarController.astrologerAvailavility[index].time!.isNotEmpty
                                     ? bottombarController.astrologerAvailavility[index].time!.length > 2
                                         ? 200.0
                                         : 100
                                     : 100,
-                                child: SolidLineConnector(color: Colors.black),
+                                child: SolidLineConnector(color: Colors.purple),
                               )
                             ],
                           ),
@@ -63,7 +63,7 @@ class AvailabilityScreen extends StatelessWidget {
                                   padding: EdgeInsets.all(8),
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Text(
                                     'Not Available',
