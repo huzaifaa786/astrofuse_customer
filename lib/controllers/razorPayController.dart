@@ -550,6 +550,21 @@ class RazorPayController extends GetxController {
     }
   }
 
+  addAMountToWallet()async{
+    DateTime time = DateTime.now();
+    var responseId = time.millisecondsSinceEpoch;
+     await apiHelper.addStrip(amount: addWalletAmount, status: 'Success', paymentId: responseId.toString()).then((result) {
+            global.hideLoader();
+            splashController.getCurrentUserData();
+            splashController.update();
+            bottomController.setIndex(1, 0);
+            Get.to(() => BottomNavigationBarScreen(index: 0));
+            global.showToast(message: 'Payment transaction sucessfull', textColor: global.textColor, bgColor: global.toastBackGoundColor);
+
+            // }
+          });
+  }
+
   _tryAgain(Function onClickAction) {
     try {
       showCupertinoDialog(
